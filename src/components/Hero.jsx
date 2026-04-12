@@ -141,7 +141,7 @@ const Hero = () => {
         </div>
 
         {/* Right 3D Interactive Side */}
-        <div className="w-full lg:w-[45%] h-[400px] lg:h-[500px] relative mt-16 lg:mt-0 flex items-center justify-center pointer-events-none lg:pointer-events-auto">
+        <div className="hidden lg:flex w-full lg:w-[45%] h-[400px] lg:h-[500px] relative mt-16 lg:mt-0 items-center justify-center pointer-events-none lg:pointer-events-auto">
           {/* Back Ghost Card */}
           <div ref={cardGhost2Ref} className="absolute inset-0 flex items-center justify-center opacity-30 blur-[2px] scale-90">
             <HeroCard />

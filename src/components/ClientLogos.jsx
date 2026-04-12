@@ -1,27 +1,26 @@
 import React from 'react';
 
 const clientsTop = [
-  { name: 'HDFC Bank', url: 'https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg' },
-  { name: 'Aadhaar', url: 'https://upload.wikimedia.org/wikipedia/en/c/cf/Aadhaar_Logo.svg' },
-  { name: 'ICICI Bank', url: 'https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg' },
-  { name: 'Punjab National Bank', url: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Punjab_National_Bank.svg' },
-  { name: 'FIS', url: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Fidelity_National_Information_Services_logo.svg' },
-  { name: 'State Bank of India', url: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/SBI-logo.svg' }
+  { name: 'HDFC Bank', url: 'https://logo.clearbit.com/hdfcbank.com' },
+  { name: 'Aadhaar', url: 'https://logo.clearbit.com/uidai.gov.in' },
+  { name: 'ICICI Bank', url: 'https://logo.clearbit.com/icicibank.com' },
+  { name: 'Punjab National Bank', url: 'https://logo.clearbit.com/pnbindia.in' },
+  { name: 'FIS', url: 'https://logo.clearbit.com/fisglobal.com' },
+  { name: 'State Bank of India', url: 'https://logo.clearbit.com/sbi.co.in' }
 ];
 
 const clientsBottom = [
-  { name: 'Axis Bank', url: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg' },
-  { name: 'Kotak Mahindra', url: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Kotak_Mahindra_Bank_logo.svg' },
-  { name: 'Election Commission', url: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Election_Commission_of_India_Logo.svg' },
-  { name: 'Bank of Baroda', url: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Bank_of_Baroda_logo.svg' },
-  { name: 'Union Bank of India', url: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Union_Bank_of_India_Logo.svg' },
-  { name: 'Canara Bank', url: 'https://upload.wikimedia.org/wikipedia/en/4/4b/Canara_Bank_Logo.svg' }
+  { name: 'Axis Bank', url: 'https://logo.clearbit.com/axisbank.com' },
+  { name: 'Kotak Mahindra', url: 'https://logo.clearbit.com/kotak.com' },
+  { name: 'Bank of Baroda', url: 'https://logo.clearbit.com/bankofbaroda.in' },
+  { name: 'Union Bank of India', url: 'https://logo.clearbit.com/unionbankofindia.co.in' },
+  { name: 'Canara Bank', url: 'https://logo.clearbit.com/canarabank.com' }
 ];
 
 const certifications = [
-  { name: 'VISA', url: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg' },
-  { name: 'Mastercard', url: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg' },
-  { name: 'RuPay', url: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Rupay-Logo.png' }
+  { name: 'VISA', url: 'https://logo.clearbit.com/visa.com' },
+  { name: 'Mastercard', url: 'https://logo.clearbit.com/mastercard.us' },
+  { name: 'RuPay', url: 'https://logo.clearbit.com/npci.org.in' }
 ];
 
 const ClientLogos = () => {

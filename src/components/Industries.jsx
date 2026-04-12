@@ -53,9 +53,10 @@ const Industries = () => {
         </div>
 
         {/* SVG World Map */}
-        <div ref={mapRef} className="svg-map-container relative w-full max-w-[1000px] mx-auto mt-24 mb-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.05),transparent_70%)] pointer-events-none"></div>
-          <svg viewBox="0 0 1000 500" className="w-full h-auto opacity-90 relative z-10" style={{ filter: 'drop-shadow(0 0 20px rgba(37,99,235,0.05))' }}>
+        <div ref={mapRef} className="svg-map-container relative w-full overflow-x-auto overflow-y-hidden mt-24 mb-10 pb-6 custom-scrollbar">
+          <div className="min-w-[800px] max-w-[1000px] mx-auto relative">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.05),transparent_70%)] pointer-events-none"></div>
+            <svg viewBox="0 0 1000 500" className="w-full h-auto opacity-90 relative z-10" style={{ filter: 'drop-shadow(0 0 20px rgba(37,99,235,0.05))' }}>
             {/* Tech/Abstract Map Base */}
             <g fill="rgba(255,255,255,0.04)">
               {/* NA */}

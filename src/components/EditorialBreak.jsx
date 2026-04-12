@@ -65,37 +65,39 @@ const EditorialBreak = () => {
           </ul>
         </div>
 
-        {/* Right Side - Photo Mosaic */}
-        <div className="photo-mosaic w-full lg:w-1/2 grid grid-cols-2 gap-4 h-full relative">
-          {/* Left column - 2 tall images */}
+        {/* Right Side - Custom Built CSS Tech Aesthetics */}
+        <div className="photo-mosaic w-full lg:w-1/2 grid grid-cols-2 gap-4 h-full relative mt-16 lg:mt-0">
+          {/* Left column */}
           <div className="flex flex-col gap-4 mt-12">
-            <img 
-              src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600" 
-              alt="Circuit board close-up"
-              className="w-full h-[320px] object-cover rounded-[1.5rem] border border-white/[0.06]"
-              style={{ filter: 'brightness(0.7) contrast(1.1)', clipPath: 'inset(0 0 0 0)' }}
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1565715101973-f2d88a0671e0?w=600" 
-              alt="Smart card"
-              className="w-full h-[260px] object-cover rounded-[1.5rem] border border-white/[0.06]"
-              style={{ filter: 'brightness(0.7) contrast(1.1)', clipPath: 'inset(0 0 0 0)' }}
-            />
+             <div className="w-full h-[320px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-b from-navy-lift to-navy relative overflow-hidden flex items-end p-6" style={{ clipPath: 'inset(0 0 0 0)' }}>
+              <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(45deg, #2563EB 25%, transparent 25%, transparent 75%, #2563EB 75%, #2563EB), linear-gradient(45deg, #2563EB 25%, transparent 25%, transparent 75%, #2563EB 75%, #2563EB)', backgroundSize: '16px 16px', backgroundPosition: '0 0, 8px 8px' }}></div>
+              <div className="text-electric font-mono text-[10px] tracking-widest uppercase border border-electric/20 px-3 py-1.5 rounded-full backdrop-blur-md bg-navy/50 relative z-10 w-max">Secure Core Framework</div>
+            </div>
+            <div className="w-full h-[260px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-tr from-[#060E1A] to-electric/10 relative overflow-hidden flex items-center justify-center p-6" style={{ clipPath: 'inset(0 0 0 0)' }}>
+               {/* Animated rings */}
+               <div className="w-full h-full border border-electric/20 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
+                 <div className="w-[70%] h-[70%] border-t border-r border-electric/40 rounded-full"></div>
+                 <div className="absolute w-2 h-2 bg-electric rounded-full shadow-[0_0_10px_#2563EB] top-4"></div>
+               </div>
+            </div>
           </div>
-          {/* Right column - 2 square images */}
+          {/* Right column */}
           <div className="flex flex-col gap-4">
-            <img 
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" 
-              alt="Industrial manufacturing"
-              className="w-full h-[260px] object-cover rounded-[1.5rem] border border-white/[0.06]"
-              style={{ filter: 'brightness(0.7) contrast(1.1)', clipPath: 'inset(0 0 0 0)' }}
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=400" 
-              alt="Biometric scanner"
-              className="w-full h-[320px] object-cover rounded-[1.5rem] border border-white/[0.06]"
-              style={{ filter: 'brightness(0.7) contrast(1.1)', clipPath: 'inset(0 0 0 0)' }}
-            />
+             <div className="w-full h-[260px] rounded-[1.5rem] border border-white/[0.06] bg-navy-lift relative overflow-hidden flex flex-col items-center justify-center" style={{ clipPath: 'inset(0 0 0 0)' }}>
+              <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)]" style={{ backgroundSize: '20px 20px' }}></div>
+              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-electric/40 shadow-[0_0_10px_#2563EB]"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-electric rounded-full shadow-[0_0_15px_#2563EB]"></div>
+            </div>
+            <div className="w-full h-[320px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-b from-navy to-electric/5 relative overflow-hidden p-6 flex flex-col justify-end" style={{ clipPath: 'inset(0 0 0 0)' }}>
+              {/* Analytics bars */}
+              <div className="w-full h-[50%] border-l border-b border-electric/20 mb-6 flex items-end justify-between px-2 pt-4 relative">
+                <div className="w-[15%] h-[40%] bg-electric/20 rounded-t-sm backdrop-blur-sm"></div>
+                <div className="w-[15%] h-[60%] bg-electric/40 rounded-t-sm backdrop-blur-sm"></div>
+                <div className="w-[15%] h-[90%] bg-electric rounded-t-sm shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
+                <div className="w-[15%] h-[70%] bg-electric/60 rounded-t-sm backdrop-blur-sm"></div>
+              </div>
+              <div className="text-white/50 font-mono text-[10px] tracking-widest uppercase">Global Output Velocity</div>
+            </div>
           </div>
         </div>
         

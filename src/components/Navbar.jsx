@@ -123,12 +123,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
         
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 cursor-pointer group">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative top-[1px]">
-            <rect x="2" y="2" width="14" height="14" rx="2" stroke="white" strokeWidth="2" strokeOpacity="0.3" className="group-hover:stroke-white transition-colors" />
-            <rect x="8" y="8" width="14" height="14" rx="2" fill="#2563EB" />
-          </svg>
-          <span className="font-sans font-medium text-white tracking-widest text-sm sm:text-base uppercase">KL Hi-Tech</span>
+        <Link to="/" className="flex items-center space-x-3 cursor-pointer group pt-1">
+          <span className="font-sans font-[700] text-[#2563EB] tracking-[0.10em] text-[16px] sm:text-[20px] uppercase whitespace-nowrap">SECURE PRINT LIMITED</span>
         </Link>
 
         {/* Desktop Nav links */}

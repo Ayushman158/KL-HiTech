@@ -6,11 +6,15 @@ import HeroCard from './HeroCard';
 const CardsVisual = () => (
   <div className="relative w-[160px] h-[160px] preserve-3d" style={{ perspective: '800px' }}>
     <div className="absolute inset-0 animate-[spin-slow_15s_linear_infinite]" style={{ transformStyle: 'preserve-3d' }}>
-      <div className="absolute top-0 left-[20px] scale-[0.35] origin-center shadow-[0_10px_30px_rgba(37,99,235,0.5)] border border-electric rounded-[1.5rem] bg-navy-lift" style={{ transform: 'rotateY(-20deg) rotateX(20deg) translateZ(30px)' }}>
-        <HeroCard />
+      <div className="absolute top-[20px] left-[30px] w-[100px] h-[158px] shadow-[0_10px_30px_rgba(37,99,235,0.5)] border border-electric rounded-xl bg-gradient-to-b from-navy-lift to-navy overflow-hidden" style={{ transform: 'rotateY(-20deg) rotateX(20deg) translateZ(30px)' }}>
+        <div className="absolute top-4 left-3 w-5 h-4 bg-yellow-600 rounded-[2px] opacity-80 border border-black/30"></div>
+        <div className="absolute top-4 right-3 bg-white/20 w-4 h-4 rounded-full"></div>
+        <div className="absolute bottom-4 left-3 text-white/50 font-mono text-[8px] tracking-[0.2em]">•••• 4291</div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent"></div>
       </div>
-      <div className="absolute top-[30px] left-[0px] scale-[0.35] origin-center shadow-lg border border-white/20 rounded-[1.5rem] bg-navy" style={{ transform: 'rotateY(-20deg) rotateX(20deg) translateZ(-30px)' }}>
-        <HeroCard />
+      <div className="absolute top-[30px] left-[10px] w-[100px] h-[158px] shadow-lg border border-white/20 rounded-xl bg-gradient-to-b from-navy to-[#060E1A] overflow-hidden" style={{ transform: 'rotateY(-20deg) rotateX(20deg) translateZ(-30px)' }}>
+        <div className="absolute top-4 left-3 w-5 h-4 bg-yellow-600/50 rounded-[2px] opacity-80 border border-black/30"></div>
+        <div className="absolute bottom-4 left-3 text-white/30 font-mono text-[8px] tracking-[0.2em]">•••• 8832</div>
       </div>
     </div>
   </div>
@@ -53,19 +57,16 @@ const BiometricVisual = () => (
   </div>
 );
 
-// 3D Visual for Wearables
+// 3D Visual for Wearables (Smart Ring)
 const WearableVisual = () => (
   <div className="relative w-[140px] h-[140px] preserve-3d" style={{ perspective: '800px' }}>
-    <div className="absolute inset-0 animate-[spin-slow_10s_linear_infinite]" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(60deg)' }}>
-      {/* Outer Ring */}
-      <div className="absolute inset-0 border-4 border-electric/30 rounded-full shadow-[0_0_30px_rgba(37,99,235,0.3)]"></div>
-      {/* Inner Chip Ring */}
-      <div className="absolute inset-4 border-[6px] border-solid border-[#1b355e] rounded-full flex items-center justify-center transform translateZ(20px) bg-navy-lift shadow-[0_20px_20px_rgba(0,0,0,0.4)]">
-        {/* Core Chip */}
-        <div className="w-[30%] h-[30%] bg-electric/90 rounded-[4px] shadow-[0_0_15px_rgba(37,99,235,0.8)] border border-white/20"></div>
-      </div>
-      {/* Lower Shadow */}
-      <div className="absolute inset-0 bg-electric/20 rounded-full blur-[20px] transform translateZ(-40px)"></div>
+    <div className="absolute inset-0 animate-[spin-slow_10s_linear_infinite]" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(75deg)' }}>
+      {/* Smart Ring Layers */}
+      <div className="absolute top-[20px] left-[20px] w-[100px] h-[100px] rounded-full border-[10px] border-[#1e293b] shadow-[0_0_20px_rgba(37,99,235,0.5)]" style={{ transform: 'translateZ(20px)' }}></div>
+      <div className="absolute top-[20px] left-[20px] w-[100px] h-[100px] rounded-full border-[10px] border-electric/40" style={{ transform: 'translateZ(10px)' }}></div>
+      <div className="absolute top-[20px] left-[20px] w-[100px] h-[100px] rounded-full border-[10px] border-[#0f172a] shadow-xl" style={{ transform: 'translateZ(0px)' }}></div>
+      {/* Ring Active NFC Pulse Element */}
+      <div className="absolute top-[15px] left-[50px] w-[10px] h-[8px] bg-electric rounded-full shadow-[0_0_15px_#2563EB] animate-pulse" style={{ transform: 'translateZ(20px)' }}></div>
     </div>
   </div>
 );
