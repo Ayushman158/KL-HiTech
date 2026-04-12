@@ -71,7 +71,24 @@ const EditorialBreak = () => {
           <div className="flex flex-col gap-4 mt-12">
              <div className="w-full h-[320px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-b from-navy-lift to-navy relative overflow-hidden flex items-end p-6" style={{ clipPath: 'inset(0 0 0 0)' }}>
               <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(45deg, #2563EB 25%, transparent 25%, transparent 75%, #2563EB 75%, #2563EB), linear-gradient(45deg, #2563EB 25%, transparent 25%, transparent 75%, #2563EB 75%, #2563EB)', backgroundSize: '16px 16px', backgroundPosition: '0 0, 8px 8px' }}></div>
-              <div className="text-electric font-mono text-[10px] tracking-widest uppercase border border-electric/20 px-3 py-1.5 rounded-full backdrop-blur-md bg-navy/50 relative z-10 w-max">Secure Core Framework</div>
+              
+              {/* Dynamic 3D Framework Illustration */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-[130px] h-[130px]" style={{ perspective: '800px' }}>
+                  <div className="absolute inset-0 w-full h-full animate-[spin-slow_15s_linear_infinite]" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(55deg) rotateZ(45deg)' }}>
+                    {/* Base Layer */}
+                    <div className="absolute inset-0 border border-electric/30 rounded-[1.5rem] bg-navy shadow-[0_0_30px_rgba(37,99,235,0.2)]" style={{ transform: 'translateZ(-30px)' }}></div>
+                    {/* Middle Layer */}
+                    <div className="absolute inset-4 border border-electric/60 rounded-[1rem] bg-navy-lift" style={{ transform: 'translateZ(10px)' }}></div>
+                    {/* Top Core Layer */}
+                    <div className="absolute inset-8 border border-white/20 rounded-[0.5rem] bg-electric/20 backdrop-blur-sm flex items-center justify-center shadow-[0_0_40px_rgba(37,99,235,0.6)]" style={{ transform: 'translateZ(50px)' }}>
+                       <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_15px_white]"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-electric font-mono text-[10px] tracking-widest uppercase border border-electric/20 px-3 py-1.5 rounded-full backdrop-blur-md bg-[#060e1a]/80 shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative z-10 w-max">Secure Core Framework</div>
             </div>
             <div className="w-full h-[260px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-tr from-[#060E1A] to-electric/10 relative overflow-hidden flex items-center justify-center p-6" style={{ clipPath: 'inset(0 0 0 0)' }}>
                {/* Animated rings */}
