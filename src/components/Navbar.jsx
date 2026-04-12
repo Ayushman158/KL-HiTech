@@ -91,12 +91,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
         
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 cursor-pointer group pt-1">
-          <span className="font-sans font-[700] text-[#2563EB] tracking-wider text-[17px] sm:text-[20px] uppercase whitespace-nowrap logo-glow transition-all">SECURE PRINT LIMITED</span>
+        <Link to="/" className="flex items-center justify-center cursor-pointer group relative pt-1">
+          <div className="bg-white/95 backdrop-blur-md rounded-[8px] px-3.5 py-2 shadow-[0_0_15px_rgba(37,99,235,0.3)] group-hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] group-hover:-translate-y-0.5 transition-all duration-300">
+             <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[28px] sm:h-[32px] w-auto object-contain" />
+          </div>
         </Link>
-        <style>{`
-          .logo-glow:hover { text-shadow: 0 0 15px rgba(37,99,235,0.7); }
-        `}</style>
         
         {/* Desktop Nav links */}
         <div className="hidden md:flex items-center space-x-8">
@@ -146,8 +145,10 @@ const Navbar = () => {
           </div>
           
           <div className="flex flex-col flex-grow overflow-y-auto pb-20">
-            <Link to="/" className="mb-10 block" onClick={() => setMobileMenuOpen(false)}>
-              <span className="font-sans font-[700] text-[#2563EB] tracking-[0.10em] text-[18px] uppercase">SECURE PRINT LIMITED</span>
+            <Link to="/" className="mb-10 block w-max" onClick={() => setMobileMenuOpen(false)}>
+              <div className="bg-white/95 backdrop-blur-md rounded-[8px] px-4 py-2.5 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                 <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[32px] w-auto object-contain" />
+              </div>
             </Link>
 
             <div className="flex flex-col space-y-4">
