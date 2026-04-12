@@ -44,7 +44,7 @@ const ClientLogos = () => {
             ))}
           </div>
         </div>
-        
+
         {/* Row 2: Left to Right */}
         <div className="relative w-full overflow-hidden flex pt-2 pb-2">
           <div className="flex w-max animate-marquee-reverse group">
@@ -64,7 +64,7 @@ const ClientLogos = () => {
         </div>
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
           {certifications.map((cert, idx) => (
-            <div key={idx} className="flex items-center justify-center grayscale-[1] opacity-[0.5] hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110">
+            <div key={idx} className="flex items-center justify-center transition-all duration-500 transform hover:scale-110">
               <img src={cert.url} alt={cert.name} className="h-[28px] md:h-[40px] object-contain mix-blend-multiply" />
             </div>
           ))}
