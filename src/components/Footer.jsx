@@ -10,11 +10,7 @@ const Footer = () => {
           {/* Col 1 */}
           <div className="flex flex-col">
             <div className="flex items-center space-x-3 cursor-pointer group mb-6">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="14" height="14" rx="2" stroke="white" strokeWidth="2" strokeOpacity="0.3" className="group-hover:stroke-white transition-colors" />
-                <rect x="8" y="8" width="14" height="14" rx="2" fill="#2563EB" />
-              </svg>
-              <span className="font-sans font-[600] text-white tracking-widest text-[16px] uppercase">KL Hi-Tech</span>
+              <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[30px] w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <p className="font-mono text-text-muted text-[12px] mb-8 tracking-wide">
               Securing identities since 1988.
