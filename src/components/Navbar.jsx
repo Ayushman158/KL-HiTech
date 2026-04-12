@@ -1,90 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const MegaMenuPanel = ({ type, isOpen }) => {
   if (!isOpen) return null;
 
+  const content = {
+    Solutions: [
+      { title: 'Banking Solutions', desc: 'Secure payment cards and EMV manufacturing.' },
+      { title: 'Telecom Cards', desc: 'High-volume SIM and smart card production.' },
+      { title: 'Government', desc: 'Aadhaar, Voter ID, and highly secure credentials.' },
+      { title: 'Transport', desc: 'Access control and secure transit payment devices.' },
+      { title: 'Retail & Loyalty', desc: 'Prepaid, gift, and membership cards.' },
+    ],
+    Products: [
+      { title: 'Contactless Cards', desc: 'NFC-enabled tap-to-pay tech.' },
+      { title: 'Biometric Cards', desc: 'Fingerprint authentication.' },
+      { title: 'Metal Cards', desc: 'Premium weighted banking cards.' },
+      { title: 'Wearables', desc: 'NFC keyfobs and smart rings.' },
+    ]
+  };
+
+  const activeContent = content[type];
+  if (!activeContent) return null;
+
   return (
-    <div className="absolute top-full left-0 w-full bg-navy-lift/95 backdrop-blur-2xl border-b border-electric/30 animate-in fade-in slide-in-from-top-2 duration-200" style={{ transformOrigin: "top" }}>
-      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-3 gap-8">
+    <div className="absolute top-full left-0 w-full min-h-[300px] border-t border-border-light shadow-2xl backdrop-blur-xl bg-navy-lift/95 z-50 transform origin-top transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 flex">
         
-        {type === 'Solutions' && (
-          <>
-            <div className="col-span-2 grid grid-cols-2 gap-6">
-              {[
-                { title: 'Financial Institutions', desc: 'EMV cards, MICR cheques, PIN mailers' },
-                { title: 'Public Security & National Identity', desc: 'Aadhaar, voter ID, passports' },
-                { title: 'Education', desc: 'Marksheets, certificates, OMR sheets' },
-                { title: 'Government Sector', desc: 'Security printing for critical departments' },
-                { title: 'Telecom', desc: 'SIM cards, eSIM solutions' },
-                { title: 'Transport', desc: 'FASTag, RFID tickets, SCOSTA cards' },
-              ].map((item, idx) => (
-                <div key={idx} className="group cursor-pointer border-l-2 border-transparent hover:border-electric transition-all pl-4 time-ease">
-                  <h4 className="text-white text-sm font-medium mb-1">{item.title}</h4>
-                  <p className="text-steel text-xs">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-            <div className="bg-navy rounded-xl p-6 border border-border-dark flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] uppercase font-mono tracking-wider text-electric mb-4 block">Featured Case Study</span>
-                <h4 className="text-white font-medium text-lg mb-2 leading-tight">Securing National Identity for 1.3 Billion Citizens</h4>
-              </div>
-              <button className="flex items-center text-electric text-sm font-mono mt-6 hover:text-white transition-colors">
-                Read full study <ArrowRight size={14} className="ml-2" />
-              </button>
-            </div>
-          </>
-        )}
+        {/* Title Side */}
+        <div className="w-1/3 pr-8 border-r border-border-dark">
+          <h2 className="font-sans font-[700] text-white text-3xl mb-4">{type}</h2>
+          <p className="font-sans text-steel text-[15px] max-w-[250px] leading-[1.6]">
+            Secure manufacturing pipelines designed for {type.toLowerCase()} across global critical infrastructure.
+          </p>
+          <div className="mt-8">
+            <a href="#" className="inline-block text-electric font-mono text-[12px] uppercase tracking-widest hover:text-white transition-colors">
+              View All {type} <span className="ml-1">→</span>
+            </a>
+          </div>
+        </div>
 
-        {type === 'Products' && (
-          <>
-            <div className="col-span-2 grid grid-cols-2 gap-6">
-              {[
-                { title: 'Banking Cards', desc: 'Contact, contactless & metal' },
-                { title: 'RFID Solutions', desc: 'Tags, readers and antennas' },
-                { title: 'Biometric Cards', desc: 'Fingerprint-enabled secure access' },
-                { title: 'Secure Documents', desc: 'High-security printed credentials' },
-                { title: 'Wearable Payment Devices', desc: 'Keyfobs, smart rings' },
-              ].map((item, idx) => (
-                <div key={idx} className="group cursor-pointer border-l-2 border-transparent hover:border-electric transition-all pl-4 time-ease">
-                  <h4 className="text-white text-sm font-medium mb-1">{item.title}</h4>
-                  <p className="text-steel text-xs">{item.desc}</p>
-                </div>
-              ))}
+        {/* Links Grid */}
+        <div className="w-2/3 pl-12 grid grid-cols-2 gap-x-8 gap-y-6">
+          {activeContent.map((item, idx) => (
+            <div key={idx} className="group cursor-pointer">
+              <h3 className="font-sans font-[600] text-white text-[16px] mb-1 group-hover:text-electric transition-colors">{item.title}</h3>
+              <p className="font-sans text-steel text-[13px] leading-[1.5] group-hover:text-text-muted transition-colors">{item.desc}</p>
             </div>
-            <div className="bg-navy rounded-xl p-6 border border-border-dark flex flex-col justify-center items-center text-center overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-electric/20 to-transparent mix-blend-overlay"></div>
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-electric mb-4 relative z-10"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="11" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="17" y2="16"/></svg>
-              <h4 className="text-white font-medium text-base relative z-10">Next-Gen Biometric Cards</h4>
-            </div>
-          </>
-        )}
+          ))}
+        </div>
 
-        {type === 'Industries' && (
-          <>
-            <div className="col-span-2 grid grid-cols-2 gap-6">
-              {[
-                'Banking & Financial Services',
-                'Government & Public Sector',
-                'Education',
-                'Telecom',
-                'Transport & Logistics',
-                'Retail',
-                'Healthcare'
-              ].map((item, idx) => (
-                <div key={idx} className="group cursor-pointer border-l-2 border-transparent hover:border-electric transition-all pl-4 py-1 time-ease">
-                  <h4 className="text-white text-sm font-medium">{item}</h4>
-                </div>
-              ))}
-            </div>
-            <div className="bg-navy rounded-xl p-6 border border-border-dark flex flex-col justify-center">
-              <h3 className="font-serif italic text-3xl text-white mb-2 leading-tight">Serving 7 critical sectors</h3>
-              <p className="font-mono text-electric text-sm tracking-wide">across 52+ countries</p>
-            </div>
-          </>
-        )}
       </div>
     </div>
   );
@@ -98,7 +64,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -115,8 +81,10 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
-        scrolled ? 'bg-navy/85 backdrop-blur-xl border-b border-border-dark py-4' : 'bg-transparent border-transparent py-6'
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'py-3 lg:py-4 bg-navy-lift/90 backdrop-blur-xl border-b border-border-light shadow-lg' 
+          : 'py-5 lg:py-8 bg-transparent border-b border-transparent'
       }`}
       onMouseLeave={() => setActiveMenu(null)}
     >
@@ -124,14 +92,17 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 cursor-pointer group pt-1">
-          <span className="font-sans font-[700] text-[#2563EB] tracking-[0.10em] text-[16px] sm:text-[20px] uppercase whitespace-nowrap">SECURE PRINT LIMITED</span>
+          <span className="font-sans font-[700] text-[#2563EB] tracking-wider text-[17px] sm:text-[20px] uppercase whitespace-nowrap logo-glow transition-all">SECURE PRINT LIMITED</span>
         </Link>
-
+        <style>{`
+          .logo-glow:hover { text-shadow: 0 0 15px rgba(37,99,235,0.7); }
+        `}</style>
+        
         {/* Desktop Nav links */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
+          {navItems.map((item, idx) => (
             <div 
-              key={item.label}
+              key={idx} 
               className="relative py-2"
               onMouseEnter={() => item.hasDropdown ? setActiveMenu(item.label) : setActiveMenu(null)}
             >
@@ -145,41 +116,80 @@ const Navbar = () => {
               </div>
             </div>
           ))}
+
+          {/* CTA Button */}
+          <Link to="/contact" className="ml-4 font-sans text-sm font-medium border border-border-light px-5 py-2.5 rounded-full text-white hover:bg-white hover:text-navy transition-all duration-300">
+            Client Portal
+          </Link>
         </div>
 
-        {/* Right CTA */}
-        <div className="hidden md:flex">
-          <button className="bg-electric hover:bg-electric-dim text-white px-6 py-2.5 rounded-[0.75rem] text-sm font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] overflow-hidden relative group">
-            <span className="relative z-10">Request a Quote</span>
-          </button>
-        </div>
-
-        {/* Mobile Hamburger toggle */}
-        <div className="md:hidden">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white p-2">
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white focus:outline-none">
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+
       </div>
 
-      {/* Mega dropdown panel (Desktop) */}
+      {/* Mega Menu Dropdowns (Desktop) */}
       <div className="hidden md:block">
-        <MegaMenuPanel type={activeMenu} isOpen={!!activeMenu} />
+        <MegaMenuPanel type="Solutions" isOpen={activeMenu === 'Solutions'} />
+        <MegaMenuPanel type="Products" isOpen={activeMenu === 'Products'} />
       </div>
 
       {/* Mobile Menu Fullscreen Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[72px] bg-navy-lift bg-opacity-100 z-[90] flex flex-col px-6 py-8 overflow-y-auto w-full md:hidden">
-          {navItems.map((item) => (
-            <div key={item.label} className="border-b border-border-dark py-4 text-white font-medium text-lg flex items-center justify-between">
-              {item.label} {item.hasDropdown && <ChevronDown size={18} />}
+      <div className={`fixed inset-0 bg-navy z-40 transform transition-transform duration-500 ease-in-out md:hidden ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col h-full pt-20 px-6">
+          <div className="flex justify-end mb-8">
+            <button onClick={() => setMobileMenuOpen(false)} className="text-white absolute top-6 right-6 p-2"><X size={28} /></button>
+          </div>
+          
+          <div className="flex flex-col flex-grow overflow-y-auto pb-20">
+            <Link to="/" className="mb-10 block" onClick={() => setMobileMenuOpen(false)}>
+              <span className="font-sans font-[700] text-[#2563EB] tracking-[0.10em] text-[18px] uppercase">SECURE PRINT LIMITED</span>
+            </Link>
+
+            <div className="flex flex-col space-y-4">
+              {/* Mobile Menu Links */}
+              {navItems.map((item, idx) => (
+                <div key={idx} className="flex flex-col">
+                  <div className="flex items-center justify-between py-2 border-b border-white/5">
+                    {item.to ? (
+                      <Link to={item.to} className="text-xl font-medium text-white hover:text-electric transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span className="text-xl font-medium text-white" onClick={() => item.hasDropdown && setActiveMenu(activeMenu === item.label ? null : item.label)}>
+                        {item.label}
+                      </span>
+                    )}
+                    {item.hasDropdown && (
+                      <button onClick={() => setActiveMenu(activeMenu === item.label ? null : item.label)} className="p-2 outline-none">
+                        <ChevronDown size={20} className={`text-electric transition-transform duration-300 ${activeMenu === item.label ? 'rotate-180' : ''}`} />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {item.hasDropdown && activeMenu === item.label && (
+                    <div className="mt-4 flex flex-col space-y-4 pl-4 border-l border-white/10">
+                      {['Banking Solutions', 'Telecom Cards', 'Commercial Print', 'Digital Identities'].map((sub, sIdx) => (
+                        <a href="#" key={sIdx} className="text-steel hover:text-white transition-colors text-lg">{sub}</a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-          <button className="bg-electric text-white rounded-[0.75rem] w-full py-4 mt-8 font-medium">
-            Request a Quote
-          </button>
+
+            <div className="mt-auto pt-8">
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center bg-electric text-white py-4 rounded-lg font-medium text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                Client Portal
+              </Link>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

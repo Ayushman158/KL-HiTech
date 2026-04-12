@@ -6,7 +6,7 @@ const EditorialBreak = () => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.from('.photo-mosaic img', {
+      gsap.from('.photo-mosaic > div > div', {
         scrollTrigger: {
           trigger: '.photo-mosaic',
           start: 'top 80%',
@@ -35,8 +35,8 @@ const EditorialBreak = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-[10rem] bg-navy w-full relative border-b border-border-dark">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-8 overflow-hidden">
+    <section ref={containerRef} className="py-[10rem] bg-navy w-full relative border-b border-border-dark overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-8 relative z-10">
         
         {/* Left Side */}
         <div className="ed-text w-full lg:w-1/2 flex flex-col pr-0 lg:pr-12">
@@ -58,7 +58,7 @@ const EditorialBreak = () => {
               "Visa, Mastercard & RuPay approved",
               "End-to-end supply chain security"
             ].map((text, idx) => (
-              <li key={idx} className="py-6 border-b border-white/10 text-white font-sans font-[600] text-[18px]">
+              <li key={idx} className="py-6 border-b border-white/10 text-white font-sans font-[600] text-[16px] md:text-[18px]">
                 {text}
               </li>
             ))}
