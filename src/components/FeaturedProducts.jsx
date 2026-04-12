@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import HeroCard from './HeroCard';
 
@@ -193,9 +194,9 @@ const FeaturedProducts = () => {
                     </ul>
                     
                     <div>
-                      <a href="#" className="inline-flex items-center text-electric hover:text-white transition-colors duration-300 font-mono text-[13px] font-semibold tracking-[0.05em] uppercase border border-electric/20 rounded-full px-6 py-2.5 bg-electric/5 hover:bg-electric/20">
+                      <Link to={`/products/${prod.title.toLowerCase().replace(/ /g, '-')}`} className="inline-flex items-center text-electric hover:text-white transition-colors duration-300 font-mono text-[13px] font-semibold tracking-[0.05em] uppercase border border-electric/20 rounded-full px-6 py-2.5 bg-electric/5 hover:bg-electric/20">
                         Request specifications <span className="ml-2 mt-[-2px]">→</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
 const insights = [
@@ -67,9 +68,9 @@ const LatestInsights = () => {
                 </p>
                 <div className="flex items-center justify-between mt-auto border-t border-white/5 pt-6">
                   <span className="font-mono text-[11px] text-text-muted uppercase tracking-widest">{item.date}</span>
-                  <span className="font-sans text-[14px] font-[500] text-electric opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center">
+                  <Link to={`/insights/${item.title.toLowerCase().replace(/ /g, '-').slice(0, 20)}`} className="font-sans text-[14px] font-[500] text-electric opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center outline-none">
                     Read More <span className="ml-1">→</span>
-                  </span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -77,9 +78,9 @@ const LatestInsights = () => {
         </div>
         
         <div className="flex justify-center text-center">
-          <a href="#" className="inline-flex items-center text-electric hover:text-white font-sans font-[500] text-[16px] transition-colors duration-300 group">
+          <Link to="/knowledge-hub" className="inline-flex items-center text-electric hover:text-white font-sans font-[500] text-[16px] transition-colors duration-300 group outline-none">
             View all insights <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import About from './pages/About';
 import Innovation from './pages/Innovation';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
+import ServicePage from './pages/ServicePage';
 
 // Auto-scroll to top on route change
 const ScrollToTop = () => {
@@ -31,6 +32,16 @@ function App() {
             <Route path="/innovation" element={<Innovation />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
+            
+            {/* Dynamic Content Routes */}
+            <Route path="/solutions" element={<ServicePage />} />
+            <Route path="/solutions/:id" element={<ServicePage />} />
+            <Route path="/products" element={<ServicePage />} />
+            <Route path="/products/:id" element={<ServicePage />} />
+            <Route path="/knowledge-hub" element={<ServicePage />} />
+            <Route path="/insights" element={<ServicePage />} />
+            <Route path="/insights/:id" element={<ServicePage />} />
+            <Route path="/press-release" element={<ServicePage />} />
           </Routes>
         </div>
         <Footer />

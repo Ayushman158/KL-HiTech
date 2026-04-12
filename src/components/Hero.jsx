@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import HeroCard from './HeroCard';
 
@@ -154,12 +155,12 @@ const Hero = () => {
           </p>
 
           <div className="hero-cta flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-16 w-full sm:w-auto">
-            <button className="w-full sm:w-auto bg-electric text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] hover:bg-white hover:text-navy transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+            <Link to="/solutions" className="w-full sm:w-auto bg-electric text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] hover:bg-white hover:text-navy transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.4)] text-center">
               Explore Solutions
-            </button>
-            <button className="w-full sm:w-auto bg-white/5 backdrop-blur-sm text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] border border-white/10 hover:bg-white/10 transition-all duration-300">
+            </Link>
+            <Link to="/contact" className="w-full sm:w-auto bg-white/5 backdrop-blur-sm text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] border border-white/10 hover:bg-white/10 transition-all duration-300 text-center">
               Request a Quote
-            </button>
+            </Link>
           </div>
           
           {/* Glassmorphic Stats Strip */}

@@ -35,19 +35,19 @@ const MegaMenuPanel = ({ type, isOpen }) => {
             Secure manufacturing pipelines designed for {type.toLowerCase()} across global critical infrastructure.
           </p>
           <div className="mt-8">
-            <a href="#" className="inline-block text-electric font-mono text-[12px] uppercase tracking-widest hover:text-white transition-colors">
+            <Link to={`/${type.toLowerCase()}`} className="inline-block text-electric font-mono text-[12px] uppercase tracking-widest hover:text-white transition-colors outline-none cursor-pointer">
               View All {type} <span className="ml-1">→</span>
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Links Grid */}
         <div className="w-2/3 pl-12 grid grid-cols-2 gap-x-8 gap-y-6">
           {activeContent.map((item, idx) => (
-            <div key={idx} className="group cursor-pointer">
+            <Link to={`/${type.toLowerCase()}/${item.title.toLowerCase().replace(/ /g, '-')}`} key={idx} className="group cursor-pointer block outline-none">
               <h3 className="font-sans font-[600] text-white text-[16px] mb-1 group-hover:text-electric transition-colors">{item.title}</h3>
               <p className="font-sans text-steel text-[13px] leading-[1.5] group-hover:text-text-muted transition-colors">{item.desc}</p>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -119,7 +119,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <Link to="/contact" className="ml-4 font-sans text-sm font-medium border border-border-light px-5 py-2.5 rounded-full text-white hover:bg-white hover:text-navy transition-all duration-300">
-            Client Portal
+            Get in Touch
           </Link>
         </div>
 
@@ -174,7 +174,7 @@ const Navbar = () => {
                   {item.hasDropdown && activeMenu === item.label && (
                     <div className="mt-4 flex flex-col space-y-4 pl-4 border-l border-white/10">
                       {['Banking Solutions', 'Telecom Cards', 'Commercial Print', 'Digital Identities'].map((sub, sIdx) => (
-                        <a href="#" key={sIdx} className="text-steel hover:text-white transition-colors text-lg">{sub}</a>
+                        <Link to={`/${item.label.toLowerCase()}/${sub.toLowerCase().replace(/ /g, '-')}`} onClick={() => setMobileMenuOpen(false)} key={sIdx} className="text-steel hover:text-white transition-colors text-lg">{sub}</Link>
                       ))}
                     </div>
                   )}
@@ -184,7 +184,7 @@ const Navbar = () => {
 
             <div className="mt-auto pt-8">
               <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center bg-electric text-white py-4 rounded-lg font-medium text-lg shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                Client Portal
+                Get in Touch
               </Link>
             </div>
           </div>

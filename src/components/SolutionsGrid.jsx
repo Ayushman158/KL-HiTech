@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
 const sectors = [
@@ -90,9 +91,9 @@ const SolutionsGrid = () => {
                   {sector.desc}
                 </p>
                 
-                <div className="mt-auto font-mono text-electric text-[13px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center">
+                <Link to={`/solutions/${sector.name.toLowerCase().replace(/ /g, '-')}`} className="mt-auto font-mono text-electric text-[13px] font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center outline-none">
                   Learn more <span className="ml-2">→</span>
-                </div>
+                </Link>
               </div>
             </div>
           ))}
