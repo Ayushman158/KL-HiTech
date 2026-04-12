@@ -57,16 +57,25 @@ const BiometricVisual = () => (
   </div>
 );
 
-// 3D Visual for Wearables (Smart Ring)
+// 3D Visual for Wearables (NFC Tag / Sticker)
 const WearableVisual = () => (
-  <div className="relative w-[140px] h-[140px] preserve-3d" style={{ perspective: '800px' }}>
-    <div className="absolute inset-0 animate-[spin-slow_10s_linear_infinite]" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(75deg)' }}>
-      {/* Smart Ring Layers */}
-      <div className="absolute top-[20px] left-[20px] w-[100px] h-[100px] rounded-full border-[10px] border-[#1e293b] shadow-[0_0_20px_rgba(37,99,235,0.5)]" style={{ transform: 'translateZ(20px)' }}></div>
-      <div className="absolute top-[20px] left-[20px] w-[100px] h-[100px] rounded-full border-[10px] border-electric/40" style={{ transform: 'translateZ(10px)' }}></div>
-      <div className="absolute top-[20px] left-[20px] w-[100px] h-[100px] rounded-full border-[10px] border-[#0f172a] shadow-xl" style={{ transform: 'translateZ(0px)' }}></div>
-      {/* Ring Active NFC Pulse Element */}
-      <div className="absolute top-[15px] left-[50px] w-[10px] h-[8px] bg-electric rounded-full shadow-[0_0_15px_#2563EB] animate-pulse" style={{ transform: 'translateZ(20px)' }}></div>
+  <div className="relative w-[150px] h-[150px] preserve-3d" style={{ perspective: '800px' }}>
+    <div className="absolute inset-0 animate-[spin-slow_15s_linear_infinite] flex items-center justify-center" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(55deg) rotateZ(35deg)' }}>
+      {/* NFC Base Substrate */}
+      <div className="absolute inset-2 bg-gradient-to-tr from-[#060E1A] to-navy border border-electric/20 rounded-[2rem] shadow-[0_25px_30px_rgba(0,0,0,0.6)]" style={{ transform: 'translateZ(-10px)' }}></div>
+      {/* NFC Top Layer with Antenna Array */}
+      <div className="absolute inset-2 bg-navy border border-white/10 rounded-[2rem] flex items-center justify-center" style={{ transform: 'translateZ(0px)' }}>
+         <div className="w-[85%] h-[85%] border-[3px] border-electric/30 rounded-[1.5rem]"></div>
+         <div className="absolute w-[65%] h-[65%] border-[3px] border-electric/50 rounded-[1rem]"></div>
+         <div className="absolute w-[45%] h-[45%] border-[3px] border-electric/70 rounded-[0.5rem]"></div>
+         {/* Core NFC Authenticator Chip */}
+         <div className="absolute w-[20%] h-[20%] bg-electric rounded-[3px] shadow-[0_0_20px_#2563EB] flex items-center justify-center">
+           <div className="w-[50%] h-[50%] border border-white/50 rounded-[1px]"></div>
+         </div>
+      </div>
+      {/* Emitting Radio Waves */}
+      <div className="absolute inset-2 border-[2px] border-electric rounded-[2rem] animate-ping opacity-30" style={{ transform: 'translateZ(10px)', animationDuration: '2s' }}></div>
+      <div className="absolute inset-0 bg-electric/10 rounded-[2rem] blur-[15px]" style={{ transform: 'translateZ(-20px)' }}></div>
     </div>
   </div>
 );
