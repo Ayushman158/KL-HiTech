@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -37,11 +38,11 @@ const Footer = () => {
           <div className="flex flex-col">
             <h4 className="font-sans font-[600] text-white text-[15px] mb-6">Quick Links</h4>
             <ul className="flex flex-col space-y-4">
-              {['About', 'Innovation', 'Resources', 'Careers', 'Press & News'].map(link => (
-                <li key={link}>
-                  <a href="#" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">{link}</a>
-                </li>
-              ))}
+              <li><Link to="/about" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">About</Link></li>
+              <li><Link to="/innovation" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Innovation</Link></li>
+              <li><a href="#" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Resources</a></li>
+              <li><Link to="/careers" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Careers</Link></li>
+              <li><Link to="/contact" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Contact</Link></li>
             </ul>
           </div>
 

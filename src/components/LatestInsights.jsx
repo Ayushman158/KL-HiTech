@@ -44,7 +44,7 @@ const LatestInsights = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-[6rem] bg-navy w-full relative border-b border-border-dark">
+    <section ref={containerRef} className="py-16 md:py-[6rem] bg-navy w-full relative border-b border-border-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col">
         <h2 className="font-sans font-[700] text-white text-[clamp(28px,4vw,40px)] tracking-tight mb-12 text-center md:text-left">
           From the Knowledge Hub

@@ -1,148 +1,161 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import HeroCard from './HeroCard';
 
 const Hero = () => {
-  const heroRef = useRef(null);
-  const cardRef = useRef(null);
-  
+  const containerRef = useRef(null);
+  const bgRef = useRef(null);
+  const obj1Ref = useRef(null);
+  const obj2Ref = useRef(null);
+  const cardMainRef = useRef(null);
+  const cardGhost1Ref = useRef(null);
+  const cardGhost2Ref = useRef(null);
+
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Entrance Animation
-      const tl = gsap.timeline();
-      tl.from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.6 })
-        .from('.hero-h1-line1', { opacity: 0, y: 30, duration: 0.7 }, '-=0.3')
-        .from('.hero-h1-line2', { opacity: 0, y: 30, duration: 0.7 }, '-=0.4')
-        .from('.hero-body', { opacity: 0, y: 20, duration: 0.6 }, '-=0.3')
-        .from('.hero-ctas', { opacity: 0, y: 20, duration: 0.5 }, '-=0.2')
-        .from('.hero-certs', { opacity: 0, duration: 0.5 }, '-=0.2')
-        .from('.hero-card-container', { 
-          opacity: 0, scale: 0.9, rotateY: -20, 
-          duration: 1.2, ease: 'power3.out' 
-        }, '-=0.8');
+      // Mesh Gradient Animation
+      gsap.to(obj1Ref.current, { x: '10vw', y: '10vh', rotation: 360, duration: 25, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      gsap.to(obj2Ref.current, { x: '-15vw', y: '-10vh', rotation: -360, duration: 30, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2 });
 
-      // Stat Counter Animation
-      gsap.from('.stat-num', {
-        scrollTrigger: {
-          trigger: '.stat-strip',
-          start: 'top 95%',
-          once: true
-        },
-        innerText: 0,
-        duration: 2,
-        snap: { innerText: 1 },
-        ease: 'power2.out',
-        stagger: 0.1,
+      // Typography Entrance
+      const tl = gsap.timeline();
+      tl.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' })
+        .from('.hero-heading .line', { y: 50, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.4')
+        .from('.hero-desc', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.6')
+        .from('.hero-cta', { y: 20, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.6')
+        .from('.hero-stats', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.4');
+
+      // Card 3D Setup & Entrance
+      gsap.set([cardMainRef.current, cardGhost1Ref.current, cardGhost2Ref.current], {
+        transformPerspective: 1000,
+        transformStyle: "preserve-3d"
       });
       
-    }, heroRef);
-    
+      tl.from(cardGhost1Ref.current, { x: 100, y: -50, z: -200, rotationY: 45, opacity: 0, duration: 1.5, ease: 'power3.out' }, '-=1')
+        .from(cardGhost2Ref.current, { x: -100, y: 50, z: -100, rotationY: -30, opacity: 0, duration: 1.5, ease: 'power3.out' }, '-=1.3')
+        .from(cardMainRef.current, { z: 200, opacity: 0, rotationY: -15, rotationX: 10, duration: 1.5, ease: 'power3.out' }, '-=1.2');
+
+      // Parallax Mouse Interaction
+      const handleMouseMove = (e) => {
+        if (!containerRef.current) return;
+        const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+        const px = (e.clientX - left) / width - 0.5;
+        const py = (e.clientY - top) / height - 0.5;
+
+        gsap.to(cardMainRef.current, {
+          rotationY: px * 30,
+          rotationX: -py * 30,
+          x: px * 20,
+          y: py * 20,
+          duration: 1,
+          ease: 'power2.out'
+        });
+        gsap.to(cardGhost1Ref.current, {
+          rotationY: px * 15 + 20,
+          rotationX: -py * 15,
+          x: px * 40 - 20,
+          y: py * 40 - 20,
+          duration: 1.5,
+          ease: 'power2.out'
+        });
+        gsap.to(cardGhost2Ref.current, {
+          rotationY: px * 10 - 15,
+          rotationX: -py * 10,
+          x: px * 60 + 20,
+          y: py * 60 + 20,
+          duration: 2,
+          ease: 'power2.out'
+        });
+      };
+      
+      containerRef.current.addEventListener('mousemove', handleMouseMove);
+
+      // Counters
+      const counters = document.querySelectorAll('.hero-counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        gsap.to(counter, { innerText: target, duration: 2.5, snap: { innerText: 1 }, ease: 'power3.out', onUpdate: function() { counter.innerText = Math.ceil(this.targets()[0].innerText); }});
+      });
+
+      return () => {
+        if (containerRef.current) containerRef.current.removeEventListener('mousemove', handleMouseMove);
+      };
+    }, containerRef);
     return () => ctx.revert();
   }, []);
 
-  const handleMouseMove = (e) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const rotateY = ((e.clientX - centerX) / rect.width) * 12;
-    const rotateX = -((e.clientY - centerY) / rect.height) * 8;
-    
-    gsap.to('.primary-card', { rotateY, rotateX, duration: 0.6, ease: 'power2.out', transformPerspective: 1000 });
-    gsap.to('.ghost-card-1', { rotateY: rotateY * 0.6, rotateX: rotateX * 0.6, x: -rotateY * 2, y: rotateX * 2, duration: 0.8, ease: 'power2.out', transformPerspective: 1000 });
-    gsap.to('.ghost-card-2', { rotateY: rotateY * 0.4, rotateX: rotateX * 0.4, x: -rotateY * 3, y: rotateX * 3, duration: 1, ease: 'power2.out', transformPerspective: 1000 });
-  };
-
-  const handleMouseLeave = () => {
-    gsap.to('.primary-card', { rotateY: -8, rotateX: 4, duration: 1, ease: 'power3.out' });
-    gsap.to('.ghost-card-1', { rotateY: -8, rotateX: 4, x: -30, y: 15, duration: 1.2, ease: 'power3.out' });
-    gsap.to('.ghost-card-2', { rotateY: -8, rotateX: 4, x: -60, y: 30, duration: 1.4, ease: 'power3.out' });
-  };
-
-  useEffect(() => {
-    // Initial Resting Position
-    gsap.set('.primary-card', { rotateY: -8, rotateX: 4, transformPerspective: 1000 });
-    gsap.set('.ghost-card-1', { rotateY: -8, rotateX: 4, x: -30, y: 15, z: -30, transformPerspective: 1000 });
-    gsap.set('.ghost-card-2', { rotateY: -8, rotateX: 4, x: -60, y: 30, z: -60, transformPerspective: 1000 });
-  }, []);
-
   return (
-    <section 
-      ref={heroRef} 
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[100dvh] h-auto bg-navy overflow-hidden flex flex-col pt-32 pb-0 border-b border-border-dark"
-    >
-      <div className="absolute inset-0 pointer-events-none z-0" style={{ backgroundImage: 'radial-gradient(rgba(37,99,235,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-      <div className="absolute top-[30%] right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] rounded-full pointer-events-none mix-blend-screen opacity-[0.12] z-0" style={{ background: 'radial-gradient(ellipse 60% 60% at 70% 50%, rgba(37,99,235,1), transparent)' }} />
-
-      <div className="flex-1 max-w-7xl mx-auto px-6 lg:px-12 w-full flex flex-col lg:flex-row items-center relative z-10 pb-16 pt-8">
-        <div className="w-full lg:w-[55%] flex flex-col lg:pt-0">
-          <div className="hero-eyebrow font-mono text-[11px] text-electric uppercase tracking-[0.15em] mb-5">
-            // TRUSTED BY 500+ INSTITUTIONS WORLDWIDE
-          </div>
-          <h1 className="flex flex-col gap-2 mb-8">
-            <span className="hero-h1-line1 font-sans font-[800] text-white text-[clamp(44px,5vw,76px)] tracking-[-0.03em] leading-[1.1]">
-              Securing Identities.
-            </span>
-            <span className="hero-h1-line2 font-serif italic text-electric text-[clamp(52px,6vw,92px)] leading-[1.1]">
-              Powering Nations.
-            </span>
-          </h1>
-          <p className="hero-body font-sans text-text-muted text-base max-w-[480px] leading-[1.7] mb-10 text-pretty">
-            India's leading secure print and smart card manufacturer. Serving governments, banks, and critical infrastructure operators across 52+ countries since 1988.
-          </p>
-          <div className="hero-ctas flex flex-wrap items-center gap-4 mb-12">
-            <button className="bg-electric hover:bg-electric-dim text-white px-8 py-4 rounded-[0.75rem] font-medium transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_14px_rgba(37,99,235,0.3)]">
-              Request a Quote
-            </button>
-            <button className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-[0.75rem] font-medium transition-all duration-300 hover:border-electric">
-              Explore Solutions
-            </button>
-          </div>
-          <div className="hero-certs flex items-center space-x-3">
-            <span className="font-mono text-[10px] text-steel uppercase tracking-widest mr-2">Certified by</span>
-            <div className="flex items-center space-x-3 text-white/50 text-[11px] font-medium tracking-wide">
-              <span>Visa</span><span className="w-px h-3 bg-white/10"></span>
-              <span>Mastercard</span><span className="w-px h-3 bg-white/10"></span>
-              <span>RuPay</span><span className="w-px h-3 bg-white/10"></span>
-              <span>ISO</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="hero-card-container w-full lg:w-[45%] h-full flex items-center justify-center mt-12 lg:mt-0 relative perspective-1000 hidden md:flex">
-          <div className="relative w-full max-w-[360px] aspect-[1.58] z-30" style={{ transformStyle: 'preserve-3d' }}>
-            <div className="ghost-card-2 absolute inset-0 opacity-[0.12]">
-               <HeroCard />
-            </div>
-            <div className="ghost-card-1 absolute inset-0 opacity-[0.25]">
-               <HeroCard />
-            </div>
-            <div ref={cardRef} className="primary-card absolute inset-0 z-10">
-               <HeroCard />
-            </div>
-          </div>
-        </div>
+    <section ref={containerRef} className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-navy pt-28 md:pt-36 pb-16 md:pb-20">
+      
+      {/* SHADER MESH BACKGROUND */}
+      <div ref={bgRef} className="absolute inset-0 w-full h-full z-0 overflow-hidden mix-blend-screen opacity-[0.85]">
+        <div ref={obj1Ref} className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] mix-blend-screen" style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.45) 0%, rgba(10,22,40,0) 70%)' }}></div>
+        <div ref={obj2Ref} className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px] mix-blend-screen" style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.35) 0%, rgba(10,22,40,0) 70%)' }}></div>
+        {/* Subtle Node Data Grid overlay */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA0MCAwIEwgMCAwIDAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]"></div>
       </div>
 
-      {/* Stat Strip at the very bottom edge */}
-      <div className="stat-strip w-full border-t border-white/10 bg-navy/80 backdrop-blur-md relative z-20 mt-auto">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4">
-          {[
-            { num: 80, suffix: 'M+', label: 'Cards Manufactured' },
-            { num: 52, suffix: '+', label: 'Countries Served' },
-            { num: 500, suffix: '+', label: 'Enterprise Clients' },
-            { num: 30, suffix: '+', label: 'Years of Excellence' },
-          ].map((stat, idx) => (
-            <div key={idx} className={`py-10 flex flex-col items-center justify-center text-center ${idx < 3 ? 'md:border-r md:border-white/10' : ''} ${idx % 2 === 0 ? 'border-r border-white/10' : ''}`}>
-              <div className="font-sans font-[700] text-white text-[32px] tracking-tight leading-none mb-2">
-                <span className="stat-num">{stat.num}</span><span>{stat.suffix}</span>
-              </div>
-              <div className="font-mono text-[11px] text-text-muted mt-1 uppercase tracking-widest">{stat.label}</div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 mt-12 md:mt-0">
+        
+        {/* Left Typography Side */}
+        <div className="flex flex-col items-start text-left w-full lg:w-[55%]">
+          <div className="hero-badge inline-flex items-center space-x-2 bg-white/5 border border-white/10 backdrop-blur-md rounded-full px-4 py-2 mb-8 md:mb-10">
+            <span className="w-2 h-2 rounded-full bg-electric animate-pulse"></span>
+            <span className="font-mono text-[10px] md:text-[12px] text-white uppercase tracking-widest font-medium">Next-Generation Printing</span>
+          </div>
+
+          <div className="hero-heading font-sans font-[800] text-[clamp(44px,6vw,84px)] leading-[1.05] tracking-tight text-white mb-8">
+            <div className="overflow-hidden"><div className="line">Forging the</div></div>
+            <div className="overflow-hidden"><div className="line">architecture</div></div>
+            <div className="overflow-hidden"><div className="line">of <span className="text-electric font-serif italic font-[500] pr-2">absolute trust.</span></div></div>
+          </div>
+
+          <p className="hero-desc font-sans text-steel text-[16px] md:text-[18px] leading-[1.7] max-w-[500px] text-balance mb-12">
+            India's premier partner for governments and financial institutions since 1988. Delivering unbreakable authentication across physical cards and digital identities.
+          </p>
+
+          <div className="hero-cta flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-16 w-full sm:w-auto">
+            <button className="w-full sm:w-auto bg-electric text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] hover:bg-white hover:text-navy transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+              Explore Solutions
+            </button>
+            <button className="w-full sm:w-auto bg-white/5 backdrop-blur-sm text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] border border-white/10 hover:bg-white/10 transition-all duration-300">
+              Request a Quote
+            </button>
+          </div>
+          
+          {/* Glassmorphic Stats Strip */}
+          <div className="hero-stats w-full max-w-[500px] bg-navy-lift/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 grid grid-cols-3 gap-4 divide-x divide-white/10 shadow-xl">
+            <div className="flex flex-col items-center justify-center">
+              <div className="font-mono text-3xl font-bold text-electric mb-1"><span className="hero-counter" data-target="80">0</span>M+</div>
+              <div className="text-[10px] text-steel font-medium tracking-widest uppercase text-center">Cards Annually</div>
             </div>
-          ))}
+            <div className="flex flex-col items-center justify-center">
+              <div className="font-mono text-3xl font-bold text-white mb-1"><span className="hero-counter" data-target="52">0</span>+</div>
+              <div className="text-[10px] text-steel font-medium tracking-widest uppercase text-center">Countries Expo</div>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <div className="font-mono text-3xl font-bold text-white mb-1"><span className="hero-counter" data-target="500">0</span>+</div>
+              <div className="text-[10px] text-steel font-medium tracking-widest uppercase text-center">Clients Worldwide</div>
+            </div>
+          </div>
         </div>
+
+        {/* Right 3D Interactive Side */}
+        <div className="w-full lg:w-[45%] h-[400px] lg:h-[500px] relative mt-16 lg:mt-0 flex items-center justify-center pointer-events-none lg:pointer-events-auto">
+          {/* Back Ghost Card */}
+          <div ref={cardGhost2Ref} className="absolute inset-0 flex items-center justify-center opacity-30 blur-[2px] scale-90">
+            <HeroCard />
+          </div>
+          {/* Middle Ghost Card */}
+          <div ref={cardGhost1Ref} className="absolute inset-0 flex items-center justify-center opacity-60 blur-[1px] scale-95">
+            <HeroCard className="border border-white/5" />
+          </div>
+          {/* Primary Front Card */}
+          <div ref={cardMainRef} className="absolute inset-0 flex items-center justify-center z-10 scale-100 drop-shadow-[0_45px_45px_rgba(37,99,235,0.25)] hover:drop-shadow-[0_45px_55px_rgba(37,99,235,0.4)] transition-shadow duration-500">
+            <HeroCard className="border border-white/10 ring-1 ring-white/5" />
+          </div>
+        </div>
+
       </div>
     </section>
   );

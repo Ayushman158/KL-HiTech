@@ -32,7 +32,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-[6rem] bg-navy w-full relative z-10 border-b border-border-dark overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-[6rem] bg-navy w-full relative z-10 border-b border-border-dark overflow-hidden">
       {/* Decorative Grid */}
       <div className="absolute top-0 right-0 w-[50%] h-full pointer-events-none opacity-20" style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 
 const MegaMenuPanel = ({ type, isOpen }) => {
@@ -93,6 +94,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,12 +105,12 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: 'About', hasDropdown: false },
+    { label: 'About', hasDropdown: false, to: '/about' },
     { label: 'Solutions', hasDropdown: true },
     { label: 'Products', hasDropdown: true },
-    { label: 'Industries', hasDropdown: true },
-    { label: 'Resources', hasDropdown: false },
-    { label: 'Careers', hasDropdown: false },
+    { label: 'Innovation', hasDropdown: false, to: '/innovation' },
+    { label: 'Careers', hasDropdown: false, to: '/careers' },
+    { label: 'Contact', hasDropdown: false, to: '/contact' },
   ];
 
   return (
@@ -121,13 +123,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
         
         {/* Logo */}
-        <div className="flex items-center space-x-3 cursor-pointer group">
+        <Link to="/" className="flex items-center space-x-3 cursor-pointer group">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative top-[1px]">
             <rect x="2" y="2" width="14" height="14" rx="2" stroke="white" strokeWidth="2" strokeOpacity="0.3" className="group-hover:stroke-white transition-colors" />
             <rect x="8" y="8" width="14" height="14" rx="2" fill="#2563EB" />
           </svg>
           <span className="font-sans font-medium text-white tracking-widest text-sm sm:text-base uppercase">KL Hi-Tech</span>
-        </div>
+        </Link>
 
         {/* Desktop Nav links */}
         <div className="hidden md:flex items-center space-x-8">
@@ -137,8 +139,12 @@ const Navbar = () => {
               className="relative py-2"
               onMouseEnter={() => item.hasDropdown ? setActiveMenu(item.label) : setActiveMenu(null)}
             >
-              <div className="flex items-center space-x-1 cursor-pointer text-sm text-steel hover:text-white transition-colors">
-                <span>{item.label}</span>
+              <div className={`flex items-center space-x-1 cursor-pointer text-sm transition-colors ${location.pathname === item.to ? 'text-electric font-medium' : 'text-steel hover:text-white'}`}>
+                {item.to ? (
+                  <Link to={item.to} className="outline-none focus:outline-none">{item.label}</Link>
+                ) : (
+                  <span>{item.label}</span>
+                )}
                 {item.hasDropdown && <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === item.label ? 'rotate-180' : ''}`} />}
               </div>
             </div>

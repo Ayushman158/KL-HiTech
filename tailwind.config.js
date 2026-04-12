@@ -20,7 +20,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        serif: ['Fraunces', 'serif'],
+        serif: ['Outfit', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       }
     }

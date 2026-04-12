@@ -56,7 +56,7 @@ const SolutionsGrid = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-[6rem] bg-navy-lift w-full relative z-10 border-b border-border-dark">
+    <section ref={containerRef} className="py-16 md:py-[6rem] bg-navy-lift w-full relative z-10 border-b border-border-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         <div className="mb-16">
