@@ -1,26 +1,23 @@
 import React from 'react';
 
 const clientsTop = [
-  { name: 'HDFC Bank', url: 'https://logo.clearbit.com/hdfcbank.com' },
-  { name: 'Aadhaar', url: 'https://logo.clearbit.com/uidai.gov.in' },
-  { name: 'ICICI Bank', url: 'https://logo.clearbit.com/icicibank.com' },
-  { name: 'Punjab National Bank', url: 'https://logo.clearbit.com/pnbindia.in' },
-  { name: 'FIS', url: 'https://logo.clearbit.com/fisglobal.com' },
-  { name: 'State Bank of India', url: 'https://logo.clearbit.com/sbi.co.in' }
+  { name: 'SBI', url: '/logos/logo1.png' },
+  { name: 'HDFC', url: '/logos/logo2.png' },
+  { name: 'ICICI', url: '/logos/logo3.png' },
+  { name: 'Axis', url: '/logos/logo4.png' },
+  { name: 'BOB', url: '/logos/logo5.png' }
 ];
 
 const clientsBottom = [
-  { name: 'Axis Bank', url: 'https://logo.clearbit.com/axisbank.com' },
-  { name: 'Kotak Mahindra', url: 'https://logo.clearbit.com/kotak.com' },
-  { name: 'Bank of Baroda', url: 'https://logo.clearbit.com/bankofbaroda.in' },
-  { name: 'Union Bank of India', url: 'https://logo.clearbit.com/unionbankofindia.co.in' },
-  { name: 'Canara Bank', url: 'https://logo.clearbit.com/canarabank.com' }
+  { name: 'PNB', url: '/logos/logo8.png' },
+  { name: 'Kotak', url: '/logos/logo_9.png' },
+  { name: 'Canara', url: '/logos/logo_10.png' },
+  { name: 'Union', url: '/logos/logo_11.png' },
+  { name: 'Aadhaar Ecosystem', url: '/logos/logo_12.png' }
 ];
 
 const certifications = [
-  { name: 'VISA', url: 'https://logo.clearbit.com/visa.com' },
-  { name: 'Mastercard', url: 'https://logo.clearbit.com/mastercard.us' },
-  { name: 'RuPay', url: 'https://logo.clearbit.com/npci.org.in' }
+  { name: 'Official Certifications', url: '/logos/logo_7.png' }
 ];
 
 const ClientLogos = () => {
