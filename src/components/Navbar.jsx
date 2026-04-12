@@ -92,7 +92,7 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 cursor-pointer group pt-1">
-           <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[28px] sm:h-[34px] w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+           <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[28px] sm:h-[34px] w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300" style={{ filter: 'invert(1) grayscale(1) contrast(500%)', mixBlendMode: 'lighten' }} />
         </Link>
         
         {/* Desktop Nav links */}
@@ -144,7 +144,7 @@ const Navbar = () => {
           
           <div className="flex flex-col flex-grow overflow-y-auto pb-20">
             <Link to="/" className="mb-10 block" onClick={() => setMobileMenuOpen(false)}>
-              <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[36px] w-auto object-contain brightness-0 invert opacity-90" />
+              <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[36px] w-auto object-contain opacity-90" style={{ filter: 'invert(1) grayscale(1) contrast(500%)', mixBlendMode: 'lighten' }} />
             </Link>
 
             <div className="flex flex-col space-y-4">

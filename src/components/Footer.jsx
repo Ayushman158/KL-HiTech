@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Col 1 */}
           <div className="flex flex-col">
             <div className="flex items-center space-x-3 cursor-pointer group mb-6">
-              <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[30px] w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+              <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[30px] w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300" style={{ filter: 'invert(1) grayscale(1) contrast(500%)', mixBlendMode: 'lighten' }} />
             </div>
             <p className="font-mono text-text-muted text-[12px] mb-8 tracking-wide">
               Securing identities since 1988.
