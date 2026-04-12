@@ -82,41 +82,34 @@ const Contact = () => {
           </div>
 
           {/* Right Column: Interactive Form */}
-          <div className="w-full lg:w-[60%] animate-on-load lg:pt-0">
-            <form onSubmit={handleSubmit} className="bg-navy-lift border border-border-dark rounded-[2rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden group hover:border-electric/30 transition-colors duration-500">
-              
-              <div className="absolute -top-16 -right-16 w-64 h-64 bg-electric/10 rounded-full blur-[80px] pointer-events-none transition-opacity duration-700 opacity-50 group-hover:opacity-100"></div>
+          <div className="w-full lg:w-[60%] animate-on-load lg:pt-0 mb-12 lg:mb-0 lg:pl-12">
+            <form onSubmit={handleSubmit} className="flex flex-col relative group h-full justify-center">
+              <h2 className="text-white font-sans font-[500] text-[24px] mb-8 border-b border-border-dark pb-3 opacity-90 tracking-wide">Client Inquiry</h2>
 
-              <h2 className="text-white font-sans font-[600] text-[28px] md:text-3xl mb-10 tracking-tight">Client Portal Inquiry</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-8 mb-6 md:mb-8">
                 <div className="flex flex-col relative">
-                  <label className="font-mono text-[11px] text-steel uppercase tracking-widest mb-2 font-medium">Full Name</label>
-                  <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="bg-navy border border-border-dark rounded-xl px-5 py-4 text-white font-sans text-sm md:text-[15px] outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" placeholder="John Doe" />
+                  <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="peer bg-transparent border-b border-white/10 py-3 text-white font-sans text-[15px] outline-none focus:border-electric transition-colors" placeholder="Full Name" />
                 </div>
                 <div className="flex flex-col relative">
-                  <label className="font-mono text-[11px] text-steel uppercase tracking-widest mb-2 font-medium">Work Email</label>
-                  <input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="bg-navy border border-border-dark rounded-xl px-5 py-4 text-white font-sans text-sm md:text-[15px] outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" placeholder="john@company.com" />
+                  <input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="peer bg-transparent border-b border-white/10 py-3 text-white font-sans text-[15px] outline-none focus:border-electric transition-colors" placeholder="Work Email" />
                 </div>
               </div>
 
-              <div className="flex flex-col mb-7">
-                <label className="font-mono text-[11px] text-steel uppercase tracking-widest mb-2 font-medium">Company / Organization</label>
-                <input type="text" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} className="bg-navy border border-border-dark rounded-xl px-5 py-4 text-white font-sans text-sm md:text-[15px] outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" placeholder="Enterprise Infrastructure Ltd." />
+              <div className="flex flex-col mb-6 md:mb-8">
+                <input type="text" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} className="peer bg-transparent border-b border-white/10 py-3 text-white font-sans text-[15px] outline-none focus:border-electric transition-colors" placeholder="Company / Organization" />
               </div>
 
               <div className="flex flex-col mb-10">
-                <label className="font-mono text-[11px] text-steel uppercase tracking-widest mb-2 font-medium">Secure Message</label>
-                <textarea required rows="5" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="bg-navy border border-border-dark rounded-xl px-5 py-4 text-white font-sans text-sm md:text-[15px] outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all resize-none leading-relaxed" placeholder="Describe your operational requirements, production scale, or architectural challenges..." />
+                <textarea required rows="1" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="peer bg-transparent border-b border-white/10 py-3 text-white font-sans text-[15px] outline-none focus:border-electric transition-colors resize-y min-h-[60px] max-h-[200px] leading-relaxed" placeholder="Describe your operational requirements or architectural challenges..." />
               </div>
 
-              <button type="submit" disabled={isSubmitting} className={`w-full flex items-center justify-center gap-3 py-4 md:py-5 rounded-xl font-sans font-[600] text-[15px] transition-all duration-300 relative z-10 ${isSubmitted ? 'bg-[#10B981] text-white' : 'bg-electric text-white hover:bg-white hover:text-navy'} disabled:opacity-80 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(37,99,235,0.25)]`}>
+              <button type="submit" disabled={isSubmitting} className={`w-full md:w-auto md:self-end px-10 flex items-center justify-center gap-3 py-3.5 rounded-full font-sans font-[500] text-[13px] tracking-wide uppercase transition-all duration-300 border ${isSubmitted ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]' : 'border-electric/40 text-electric hover:bg-electric hover:border-electric hover:text-white'} disabled:opacity-70 disabled:cursor-not-allowed`}>
                 {isSubmitting ? (
-                  <span className="flex items-center gap-2"><div className="w-5 h-5 border-[2px] border-white/30 border-t-white rounded-full animate-spin" /> Encrypting Payload...</span>
+                  <span className="flex items-center gap-2"><div className="w-4 h-4 border-2 border-electric/30 border-t-electric rounded-full animate-spin" /> Transmitting</span>
                 ) : isSubmitted ? (
-                  <span className="flex items-center gap-2 font-mono uppercase tracking-widest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Transmission Secured</span>
+                  <span className="flex items-center gap-2 font-mono uppercase"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Secured</span>
                 ) : (
-                  <>Send Encrypted Transmission <Send size={18} className="mt-[-2px]" /></>
+                  <>Send Transmission <Send size={15} className="mt-[-2px] opacity-80" /></>
                 )}
               </button>
             </form>

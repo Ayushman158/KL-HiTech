@@ -76,7 +76,6 @@ const Navbar = () => {
     { label: 'Products', hasDropdown: true },
     { label: 'Innovation', hasDropdown: false, to: '/innovation' },
     { label: 'Careers', hasDropdown: false, to: '/careers' },
-    { label: 'Contact', hasDropdown: false, to: '/contact' },
   ];
 
   return (
