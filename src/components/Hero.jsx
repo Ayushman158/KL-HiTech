@@ -2,14 +2,61 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import HeroCard from './HeroCard';
 
+const NationalIDVisual = () => (
+  <div className="w-[160px] h-[240px] bg-gradient-to-b from-[#060E1A] to-navy border border-white/10 rounded-2xl p-4 shadow-[0_15px_30px_rgba(0,0,0,0.6)] relative overflow-hidden flex flex-col justify-between">
+    <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_25%,rgba(37,99,235,0.4)_50%,transparent_75%)] bg-[length:250%_250%] animate-[spin-slow_10s_linear_infinite]"></div>
+    {/* Emblem Header */}
+    <div className="flex justify-between items-center w-full relative z-10">
+      <div className="w-5 h-5 border-[1px] border-yellow-500 rounded-full flex flex-col items-center justify-center">
+        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+      </div>
+      <div className="flex flex-col gap-1 items-end">
+        <div className="w-12 h-[3px] bg-electric/40 rounded-full"></div>
+        <div className="w-8 h-[3px] bg-white/20 rounded-full"></div>
+      </div>
+    </div>
+    {/* Avatar Block */}
+    <div className="w-[65px] h-[80px] border border-white/10 bg-navy/50 rounded-[0.5rem] mt-3 mx-auto overflow-hidden relative flex flex-col items-center justify-end z-10">
+      <div className="w-6 h-6 rounded-full bg-electric/30 blur-[1px] absolute top-2"></div>
+      <div className="w-full h-[45%] bg-electric/20 rounded-t-xl blur-[1px]"></div>
+    </div>
+    {/* Microprint Details & Fingerprint */}
+    <div className="flex flex-col gap-2 mt-4 relative z-10">
+      <div className="w-full h-1 bg-white/10 rounded-full"></div>
+      <div className="w-[85%] h-1 bg-white/10 rounded-full"></div>
+      <div className="w-[50%] h-1 bg-white/5 rounded-full"></div>
+    </div>
+    {/* Fingerprint watermark */}
+    <div className="absolute bottom-2 right-2 text-electric/30 opacity-50">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M14 6c0-1.5-1-2.5-2-2.5S10 4.5 10 6M17 9c0-3-2-5-5-5S7 6 7 9M20 12c0-5-3.5-8-8-8s-8 3-8 8" />
+        <path d="M18 16c-1-2.5-3-4-6-4s-5 1.5-6 4" />
+      </svg>
+    </div>
+  </div>
+);
+
+const HeroRFIDVisual = () => (
+  <div className="w-[130px] h-[130px] bg-navy border border-electric/20 rounded-[1.5rem] flex items-center justify-center shadow-[0_10px_30px_rgba(37,99,235,0.15)] relative overflow-hidden transform rotate-12">
+     <div className="w-[80%] h-[80%] border-2 border-electric/40 rounded-[1rem] flex items-center justify-center">
+       <div className="absolute w-[60%] h-[60%] border-2 border-electric/60 rounded-[0.5rem] flex items-center justify-center"></div>
+       <div className="absolute w-[40%] h-[40%] border-2 border-electric rounded-[0.25rem] flex items-center justify-center"></div>
+       <div className="w-[20%] h-[20%] bg-electric rounded-sm shadow-[0_0_15px_#2563EB] z-10"></div>
+     </div>
+     <div className="absolute inset-0 border border-electric/50 rounded-[1.5rem] animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30"></div>
+  </div>
+);
+
 const Hero = () => {
   const containerRef = useRef(null);
   const bgRef = useRef(null);
   const obj1Ref = useRef(null);
   const obj2Ref = useRef(null);
   const cardMainRef = useRef(null);
-  const cardGhost1Ref = useRef(null);
-  const cardGhost2Ref = useRef(null);
+  const idCardRef = useRef(null);
+  const rfidRef = useRef(null);
+  const capsule1Ref = useRef(null);
+  const capsule2Ref = useRef(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -25,15 +72,16 @@ const Hero = () => {
         .from('.hero-cta', { y: 20, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.6')
         .from('.hero-stats', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.4');
 
-      // Card 3D Setup & Entrance
-      gsap.set([cardMainRef.current, cardGhost1Ref.current, cardGhost2Ref.current], {
+      // 3D Visual Elements Setups
+      gsap.set([cardMainRef.current, idCardRef.current, rfidRef.current], {
         transformPerspective: 1000,
         transformStyle: "preserve-3d"
       });
       
-      tl.from(cardGhost1Ref.current, { x: 100, y: -50, z: -200, rotationY: 45, opacity: 0, duration: 1.5, ease: 'power3.out' }, '-=1')
-        .from(cardGhost2Ref.current, { x: -100, y: 50, z: -100, rotationY: -30, opacity: 0, duration: 1.5, ease: 'power3.out' }, '-=1.3')
-        .from(cardMainRef.current, { z: 200, opacity: 0, rotationY: -15, rotationX: 10, duration: 1.5, ease: 'power3.out' }, '-=1.2');
+      tl.from(idCardRef.current, { x: 100, y: -50, z: -200, rotationY: 45, opacity: 0, duration: 1.5, ease: 'power3.out' }, '-=1')
+        .from(rfidRef.current, { x: -50, y: -100, z: -150, rotationY: -30, opacity: 0, duration: 1.5, ease: 'power3.out' }, '-=1.3')
+        .from(cardMainRef.current, { z: 200, opacity: 0, rotationY: -15, rotationX: 10, duration: 1.5, ease: 'power3.out' }, '-=1.2')
+        .from([capsule1Ref.current, capsule2Ref.current], { scale: 0, opacity: 0, duration: 1, stagger: 0.2, ease: 'back.out(1.5)' }, '-=1');
 
       // Parallax Mouse Interaction
       const handleMouseMove = (e) => {
@@ -43,28 +91,19 @@ const Hero = () => {
         const py = (e.clientY - top) / height - 0.5;
 
         gsap.to(cardMainRef.current, {
-          rotationY: px * 30,
-          rotationX: -py * 30,
-          x: px * 20,
-          y: py * 20,
-          duration: 1,
-          ease: 'power2.out'
+          rotationY: px * 30, rotationX: -py * 30, x: px * 20, y: py * 20, duration: 1, ease: 'power2.out'
         });
-        gsap.to(cardGhost1Ref.current, {
-          rotationY: px * 15 + 20,
-          rotationX: -py * 15,
-          x: px * 40 - 20,
-          y: py * 40 - 20,
-          duration: 1.5,
-          ease: 'power2.out'
+        gsap.to(idCardRef.current, {
+          rotationY: px * 15 + 10, rotationX: -py * 15, x: px * 40 - 20, y: py * 40 + 20, duration: 1.5, ease: 'power2.out'
         });
-        gsap.to(cardGhost2Ref.current, {
-          rotationY: px * 10 - 15,
-          rotationX: -py * 10,
-          x: px * 60 + 20,
-          y: py * 60 + 20,
-          duration: 2,
-          ease: 'power2.out'
+        gsap.to(rfidRef.current, {
+          rotationY: px * -20 - 10, rotationX: -py * 10, x: px * 30 + 10, y: py * 40 - 40, duration: 2, ease: 'power2.out'
+        });
+        gsap.to(capsule1Ref.current, {
+          x: px * 60 + 20, y: py * 60 - 30, duration: 1.2, ease: 'power2.out'
+        });
+        gsap.to(capsule2Ref.current, {
+          x: px * 40 - 30, y: py * 40 + 40, duration: 1.4, ease: 'power2.out'
         });
       };
       
@@ -140,20 +179,40 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right 3D Interactive Side */}
-        <div className="hidden lg:flex w-full lg:w-[45%] h-[400px] lg:h-[500px] relative mt-16 lg:mt-0 items-center justify-center pointer-events-none lg:pointer-events-auto">
-          {/* Back Ghost Card */}
-          <div ref={cardGhost2Ref} className="absolute inset-0 flex items-center justify-center opacity-30 blur-[2px] scale-90">
-            <HeroCard />
+        {/* Right 3D Interactive Side: Composite Visualization */}
+        <div className="hidden lg:flex w-full lg:w-[45%] h-[500px] relative mt-16 lg:mt-0 items-center justify-center pointer-events-none lg:pointer-events-auto">
+          
+          {/* Top Left Text Capsule */}
+          <div ref={capsule1Ref} className="absolute top-[15%] left-[5%] z-30">
+            <div className="text-[11px] font-mono uppercase tracking-widest text-white/80 border border-white/5 bg-navy-lift bg-opacity-70 backdrop-blur-md px-4 py-2 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.4)] block">
+              <span className="inline-block w-1.5 h-1.5 bg-electric rounded-full mr-2 shadow-[0_0_5px_#2563EB]"></span>
+              National ID Systems
+            </div>
           </div>
-          {/* Middle Ghost Card */}
-          <div ref={cardGhost1Ref} className="absolute inset-0 flex items-center justify-center opacity-60 blur-[1px] scale-95">
-            <HeroCard className="border border-white/5" />
+
+          {/* Bottom Right Text Capsule */}
+          <div ref={capsule2Ref} className="absolute bottom-[20%] right-[-5%] z-30">
+            <div className="text-[11px] font-mono uppercase tracking-widest text-white/80 border border-white/5 bg-navy-lift bg-opacity-70 backdrop-blur-md px-4 py-2 rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.4)] block">
+              <span className="inline-block w-1.5 h-1.5 bg-electric rounded-full mr-2 shadow-[0_0_5px_#2563EB]"></span>
+              RFID Ecosystems
+            </div>
           </div>
-          {/* Primary Front Card */}
-          <div ref={cardMainRef} className="absolute inset-0 flex items-center justify-center z-10 scale-100 drop-shadow-[0_45px_45px_rgba(37,99,235,0.25)] hover:drop-shadow-[0_45px_55px_rgba(37,99,235,0.4)] transition-shadow duration-500">
-            <HeroCard className="border border-white/10 ring-1 ring-white/5" />
+
+          {/* Back Left: RFID Chip component */}
+          <div ref={rfidRef} className="absolute top-[15%] left-[15%] z-0 opacity-80 blur-[0.5px]">
+             <HeroRFIDVisual />
           </div>
+
+          {/* Back Right: National ID / Aadhaar style portrait card */}
+          <div ref={idCardRef} className="absolute bottom-[10%] right-[10%] z-0 scale-[0.85] opacity-90">
+             <NationalIDVisual />
+          </div>
+
+          {/* Primary Front: Banking EMV Card */}
+          <div ref={cardMainRef} className="absolute inset-0 flex items-center justify-center z-20 scale-100 drop-shadow-[0_45px_45px_rgba(37,99,235,0.3)] hover:drop-shadow-[0_45px_55px_rgba(37,99,235,0.45)] transition-shadow duration-500">
+            <HeroCard className="border border-white/20 ring-1 ring-white/5 shadow-2xl" />
+          </div>
+          
         </div>
 
       </div>
