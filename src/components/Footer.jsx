@@ -40,7 +40,7 @@ const Footer = () => {
             <ul className="flex flex-col space-y-4">
               <li><Link to="/about" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">About</Link></li>
               <li><Link to="/innovation" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Innovation</Link></li>
-              <li><a href="#" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Resources</a></li>
+              <li><Link to="/knowledge-hub" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Resources</Link></li>
               <li><Link to="/careers" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Careers</Link></li>
               <li><Link to="/contact" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">Contact</Link></li>
             </ul>
@@ -52,7 +52,7 @@ const Footer = () => {
             <ul className="flex flex-col space-y-4">
               {['Financial Institutions', 'Public Security', 'Education', 'Government', 'Telecom', 'Transport'].map(link => (
                 <li key={link}>
-                  <a href="#" className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">{link}</a>
+                  <Link to={`/solutions/${link.toLowerCase().replace(/ /g, '-')}`} className="font-sans text-[14px] text-text-muted hover:text-white hover:pl-1 transition-all duration-300 inline-block">{link}</Link>
                 </li>
               ))}
             </ul>
@@ -81,8 +81,8 @@ const Footer = () => {
             &copy; 2026 KL Hi-Tech Secure Print Limited. All rights reserved.
           </p>
           <div className="flex items-center space-x-6 font-sans text-[12px] text-text-muted">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+            <Link to="/" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/" className="hover:text-white transition-colors">Sitemap</Link>
           </div>
         </div>
 
