@@ -3,14 +3,23 @@ import gsap from 'gsap';
 
 const MagneticButton = ({ children, className, ...props }) => {
   const btnRef = useRef(null);
+  const xTo = useRef(null);
+  const yTo = useRef(null);
+
+  useEffect(() => {
+    xTo.current = gsap.quickTo(btnRef.current, "x", {duration: 0.6, ease: "power3.out"});
+    yTo.current = gsap.quickTo(btnRef.current, "y", {duration: 0.6, ease: "power3.out"});
+  }, []);
 
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
     const { left, top, width, height } = btnRef.current.getBoundingClientRect();
     const x = clientX - (left + width / 2);
     const y = clientY - (top + height / 2);
-    
-    gsap.to(btnRef.current, { x: x * 0.3, y: y * 0.3, duration: 0.6, ease: 'power3.out' });
+    if(xTo.current && yTo.current) {
+      xTo.current(x * 0.3);
+      yTo.current(y * 0.3);
+    }
   };
 
   const handleMouseLeave = () => {

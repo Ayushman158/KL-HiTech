@@ -13,30 +13,25 @@ const industries = [
 
 const IndustryCard = ({ ind }) => {
   const cardRef = useRef(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const glowRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || !glowRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    glowRef.current.style.background = `radial-gradient(200px circle at ${x}px ${y}px, rgba(37,99,235,0.15), transparent 100%)`;
   };
 
   return (
     <div 
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="flex-none w-[280px] lg:w-[260px] xl:w-[220px] 2xl:w-[240px] snap-start bg-navy-lift rounded-[1.5rem] p-[1.75rem] border border-white/[0.08] group hover:border-electric/40 transition-all duration-300 relative overflow-hidden flex flex-col cursor-pointer"
-      style={{ transform: isHovered ? 'translateY(-6px)' : 'translateY(0)', boxShadow: isHovered ? '0 10px 30px rgba(0,0,0,0.5)' : 'none' }}
+      className="flex-none w-[280px] lg:w-[260px] xl:w-[220px] 2xl:w-[240px] snap-start bg-navy-lift rounded-[1.5rem] p-[1.75rem] border border-white/[0.08] group hover:border-electric/40 hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 relative overflow-hidden flex flex-col cursor-pointer"
     >
       <div 
-        className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
-        style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(200px circle at ${mousePos.x}px ${mousePos.y}px, rgba(37,99,235,0.15), transparent 100%)`
-        }}
+        ref={glowRef}
+        className="pointer-events-none absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       />
       <div className="relative z-10 flex flex-col h-full pointer-events-none">
         <h3 className="font-sans font-[600] text-white text-[18px] mb-3 group-hover:text-electric transition-colors duration-300">{ind.name}</h3>
@@ -82,21 +77,43 @@ const Industries = () => {
     return () => ctx.revert();
   }, []);
 
+  const qTo = useRef({});
+
+  useEffect(() => {
+    qTo.current.baseX = gsap.quickTo('.parallax-map-base', 'x', {duration: 1.5, ease: 'power2.out'});
+    qTo.current.baseY = gsap.quickTo('.parallax-map-base', 'y', {duration: 1.5, ease: 'power2.out'});
+    qTo.current.baseRotX = gsap.quickTo('.parallax-map-base', 'rotationX', {duration: 1.5, ease: 'power2.out'});
+    qTo.current.baseRotY = gsap.quickTo('.parallax-map-base', 'rotationY', {duration: 1.5, ease: 'power2.out'});
+    
+    qTo.current.dotsX = gsap.quickTo('.parallax-dots', 'x', {duration: 2, ease: 'power2.out'});
+    qTo.current.dotsY = gsap.quickTo('.parallax-dots', 'y', {duration: 2, ease: 'power2.out'});
+    qTo.current.dotsRotX = gsap.quickTo('.parallax-dots', 'rotationX', {duration: 2, ease: 'power2.out'});
+    qTo.current.dotsRotY = gsap.quickTo('.parallax-dots', 'rotationY', {duration: 2, ease: 'power2.out'});
+
+    qTo.current.markersX = gsap.quickTo('.parallax-markers', 'x', {duration: 1.8, ease: 'power2.out'});
+    qTo.current.markersY = gsap.quickTo('.parallax-markers', 'y', {duration: 1.8, ease: 'power2.out'});
+  }, []);
+
   const handleMapMouseMove = (e) => {
     if (!mapRef.current) return;
     const { left, top, width, height } = mapRef.current.getBoundingClientRect();
     const x = (e.clientX - left) / width - 0.5; 
     const y = (e.clientY - top) / height - 0.5;
 
-    gsap.to('.parallax-map-base', {
-      x: x * -20, y: y * -20, rotationY: x * 8, rotationX: -y * 8, ease: 'power2.out', duration: 1.5
-    });
-    gsap.to('.parallax-dots', {
-      x: x * -45, y: y * -45, rotationY: x * 10, rotationX: -y * 10, ease: 'power2.out', duration: 2
-    });
-    gsap.to('.parallax-markers', {
-      x: x * -30, y: y * -30, ease: 'power2.out', duration: 1.8
-    });
+    if(qTo.current.baseX) {
+      qTo.current.baseX(x * -20);
+      qTo.current.baseY(y * -20);
+      qTo.current.baseRotX(-y * 8);
+      qTo.current.baseRotY(x * 8);
+
+      qTo.current.dotsX(x * -45);
+      qTo.current.dotsY(y * -45);
+      qTo.current.dotsRotX(-y * 10);
+      qTo.current.dotsRotY(x * 10);
+
+      qTo.current.markersX(x * -30);
+      qTo.current.markersY(y * -30);
+    }
   };
 
   const handleMapMouseLeave = () => {
