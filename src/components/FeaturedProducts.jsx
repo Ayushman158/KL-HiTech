@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { Fingerprint } from 'lucide-react';
 import HeroCard from './HeroCard';
 
 // 3D Visual for Banking Cards
@@ -39,13 +40,8 @@ const RFIDVisual = () => (
 const BiometricVisual = () => (
   <div className="relative w-[140px] h-[140px] border border-electric/30 rounded-[1.5rem] bg-navy-lift mt-6 shadow-[0_0_40px_rgba(37,99,235,0.15)] flex justify-center overflow-hidden preserve-3d">
     {/* Fingerprint Icon Container */}
-    <div className="absolute top-[20%] w-[80px] h-[80px] opacity-60">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-electric w-full h-full drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]" strokeWidth="1">
-        <path d="M12 2v20M2 12h20 M4 4l16 16 M20 4L4 20" opacity="0.3"/>
-        <path d="M14 6c0-1.5-1-2.5-2-2.5S10 4.5 10 6M17 9c0-3-2-5-5-5S7 6 7 9M20 12c0-5-3.5-8-8-8s-8 3-8 8" />
-        <path d="M18 16c-1-2.5-3-4-6-4s-5 1.5-6 4" />
-        <circle cx="12" cy="14" r="2" fill="CurrentColor" />
-      </svg>
+    <div className="absolute top-[20%] w-[80px] h-[80px] opacity-60 flex items-center justify-center">
+      <Fingerprint className="text-electric w-[85%] h-[85%] drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]" strokeWidth={1.25} />
     </div>
     {/* Scanning Laser */}
     <div className="absolute left-0 w-full h-[2px] bg-electric shadow-[0_0_15px_rgba(37,99,235,1)] animate-[scan_3s_ease-in-out_infinite]"></div>
