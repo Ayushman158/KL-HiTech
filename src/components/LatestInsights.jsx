@@ -68,7 +68,7 @@ const LatestInsights = () => {
                 </p>
                 <div className="flex items-center justify-between mt-auto border-t border-white/5 pt-6">
                   <span className="font-mono text-[11px] text-text-muted uppercase tracking-widest">{item.date}</span>
-                  <Link to={`/insights/${item.title.toLowerCase().replace(/ /g, '-').slice(0, 20)}`} className="font-sans text-[14px] font-[500] text-electric opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center outline-none">
+                  <Link to="/knowledge-hub" className="font-sans text-[14px] font-[500] text-electric opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center outline-none">
                     Read More <span className="ml-1">→</span>
                   </Link>
                 </div>

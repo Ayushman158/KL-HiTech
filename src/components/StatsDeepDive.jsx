@@ -56,11 +56,10 @@ const StatsDeepDive = () => {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-10 border-t border-b sm:border-b-0 lg:border-t-0 border-white/[0.08]">
         {stats.map((stat, idx) => (
-          <div key={idx} className={`deep-stat-block flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-12 lg:py-8
+          <div key={idx} className={`deep-stat-block flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-12 lg:py-10 px-4 lg:px-8 xl:px-12
             ${idx !== 0 ? 'lg:border-l lg:border-white/[0.08]' : ''} 
             ${idx % 2 !== 0 ? 'sm:border-l sm:border-white/[0.08]' : ''}
-            ${idx >= 2 ? 'border-t border-white/[0.08] lg:border-t-0' : 'border-b sm:border-b-0 border-white/[0.08] lg:border-b-0'} 
-            lg:pl-8 xl:pl-12`}
+            ${idx >= 2 ? 'border-t border-white/[0.08] lg:border-t-0' : 'border-b sm:border-b-0 border-white/[0.08] lg:border-b-0'}`}
           >
             <div className="font-sans font-[800] text-white text-[clamp(64px,7vw,96px)] tracking-[-0.03em] leading-none mb-4 h-[80px] lg:h-[100px] flex items-center">
               <span className="deep-stat-val">0{stat.suffix}</span>

@@ -145,9 +145,9 @@ const Hero = () => {
           </div>
 
           <div className="hero-heading font-sans font-[800] text-[clamp(44px,6vw,84px)] leading-[1.05] tracking-tight text-white mb-8">
-            <div className="overflow-hidden"><div className="line">Forging the</div></div>
-            <div className="overflow-hidden"><div className="line">architecture</div></div>
-            <div className="overflow-hidden"><div className="line">of <span className="text-electric font-serif italic font-[500] pr-2">absolute trust.</span></div></div>
+            <div className="overflow-hidden py-2 -my-2"><div className="line">Forging the</div></div>
+            <div className="overflow-hidden py-2 -my-2"><div className="line">architecture</div></div>
+            <div className="overflow-hidden py-2 -my-2"><div className="line">of <span className="text-electric font-serif italic font-[500] pr-6">absolute trust.</span></div></div>
           </div>
 
           <p className="hero-desc font-sans text-steel text-[16px] md:text-[18px] leading-[1.7] max-w-[500px] text-balance mb-12">

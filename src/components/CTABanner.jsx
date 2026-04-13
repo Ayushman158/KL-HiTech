@@ -7,8 +7,8 @@ const MagneticButton = ({ children, className, ...props }) => {
   const yTo = useRef(null);
 
   useEffect(() => {
-    xTo.current = gsap.quickTo(btnRef.current, "x", {duration: 0.6, ease: "power3.out"});
-    yTo.current = gsap.quickTo(btnRef.current, "y", {duration: 0.6, ease: "power3.out"});
+    xTo.current = gsap.quickTo(btnRef.current, "x", {duration: 0.4, ease: "power3.out"});
+    yTo.current = gsap.quickTo(btnRef.current, "y", {duration: 0.4, ease: "power3.out"});
   }, []);
 
   const handleMouseMove = (e) => {
@@ -17,8 +17,8 @@ const MagneticButton = ({ children, className, ...props }) => {
     const x = clientX - (left + width / 2);
     const y = clientY - (top + height / 2);
     if(xTo.current && yTo.current) {
-      xTo.current(x * 0.3);
-      yTo.current(y * 0.3);
+      xTo.current(x * 0.1);
+      yTo.current(y * 0.1);
     }
   };
 

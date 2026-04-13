@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
 const industries = [
@@ -24,10 +25,11 @@ const IndustryCard = ({ ind }) => {
   };
 
   return (
-    <div 
+    <Link 
+      to="/solutions"
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="flex-none w-[280px] lg:w-[260px] xl:w-[220px] 2xl:w-[240px] snap-start bg-navy-lift rounded-[1.5rem] p-[1.75rem] border border-white/[0.08] group hover:border-electric/40 hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 relative overflow-hidden flex flex-col cursor-pointer"
+      className="flex-none block w-[260px] lg:w-[240px] xl:w-[220px] bg-navy-lift rounded-[1.5rem] p-[1.75rem] border border-white/[0.08] group hover:border-electric/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(37,99,235,0.15)] transition-all duration-[0.4s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] relative overflow-hidden flex flex-col cursor-pointer outline-none"
     >
       <div 
         ref={glowRef}
@@ -40,7 +42,7 @@ const IndustryCard = ({ ind }) => {
           View sector <span className="ml-2">→</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -188,11 +190,13 @@ const Industries = () => {
           Across Every Critical Sector
         </h2>
         
-        {/* Horizontal Scroll Cards */}
-        <div className="flex overflow-x-auto pb-8 gap-6 snap-x custom-scrollbar relative z-20">
-          {industries.map((ind, idx) => (
-            <IndustryCard key={idx} ind={ind} />
-          ))}
+        {/* Infinite Scroll Cards */}
+        <div className="mask-edges w-full relative z-20 overflow-hidden pb-12 pt-4">
+          <div className="flex w-max gap-6 animate-marquee-fast hover:[animation-play-state:paused]">
+            {[...industries, ...industries].map((ind, idx) => (
+              <IndustryCard key={idx} ind={ind} />
+            ))}
+          </div>
         </div>
 
         {/* Responsive Map Container with Interactive Parallax */}
@@ -218,10 +222,17 @@ const Industries = () => {
 
       </div>
       <style>{`
-        .custom-scrollbar::-webkit-scrollbar { height: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(37,99,235,0.5); border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(37,99,235,0.8); }
+        .mask-edges {
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        @keyframes marquee-fast {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-50% - 12px)); }
+        }
+        .animate-marquee-fast {
+          animation: marquee-fast 30s linear infinite;
+        }
       `}</style>
     </section>
   );
