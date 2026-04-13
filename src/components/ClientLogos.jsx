@@ -38,8 +38,8 @@ const ClientLogos = () => {
         <div className="relative w-full overflow-hidden flex pt-2 pb-2">
           <div className="flex w-max animate-marquee group">
             {[...clientsTop, ...clientsTop, ...clientsTop, ...clientsTop].map((logo, idx) => (
-              <div key={idx} className="flex-none w-[180px] h-[80px] mx-3 px-6 bg-white rounded-[1rem] shadow-[0_2px_10px_rgba(10,22,40,0.04)] border border-border-light flex items-center justify-center grayscale-[1] opacity-[0.4] hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(37,99,235,0.1)] transition-all duration-300 cursor-pointer">
-                <img src={logo.url} alt={logo.name} className="max-w-full max-h-[40px] mix-blend-multiply" />
+              <div key={idx} className="flex-none w-[200px] md:w-[260px] h-[90px] md:h-[120px] mx-3 px-6 md:px-8 bg-white rounded-[1rem] shadow-[0_2px_10px_rgba(10,22,40,0.04)] border border-border-light flex items-center justify-center grayscale-[1] opacity-[0.4] hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(37,99,235,0.1)] transition-all duration-300 cursor-pointer">
+                <img src={logo.url} alt={logo.name} className="max-w-full max-h-[55px] md:max-h-[75px] mix-blend-multiply" />
               </div>
             ))}
           </div>
@@ -49,8 +49,8 @@ const ClientLogos = () => {
         <div className="relative w-full overflow-hidden flex pt-2 pb-2">
           <div className="flex w-max animate-marquee-reverse group">
             {[...clientsBottom, ...clientsBottom, ...clientsBottom, ...clientsBottom].map((logo, idx) => (
-              <div key={idx} className="flex-none w-[180px] h-[80px] mx-3 px-6 bg-white rounded-[1rem] shadow-[0_2px_10px_rgba(10,22,40,0.04)] border border-border-light flex items-center justify-center grayscale-[1] opacity-[0.4] hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(37,99,235,0.1)] transition-all duration-300 cursor-pointer">
-                <img src={logo.url} alt={logo.name} className="max-w-full max-h-[40px] mix-blend-multiply" />
+              <div key={idx} className="flex-none w-[200px] md:w-[260px] h-[90px] md:h-[120px] mx-3 px-6 md:px-8 bg-white rounded-[1rem] shadow-[0_2px_10px_rgba(10,22,40,0.04)] border border-border-light flex items-center justify-center grayscale-[1] opacity-[0.4] hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(37,99,235,0.1)] transition-all duration-300 cursor-pointer">
+                <img src={logo.url} alt={logo.name} className="max-w-full max-h-[55px] md:max-h-[75px] mix-blend-multiply" />
               </div>
             ))}
           </div>
@@ -65,7 +65,7 @@ const ClientLogos = () => {
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
           {certifications.map((cert, idx) => (
             <div key={idx} className="flex items-center justify-center transition-all duration-500 transform hover:scale-110">
-              <img src={cert.url} alt={cert.name} className="h-[28px] md:h-[40px] object-contain mix-blend-multiply" />
+              <img src={cert.url} alt={cert.name} className="h-[36px] md:h-[56px] object-contain mix-blend-multiply" />
             </div>
           ))}
         </div>
