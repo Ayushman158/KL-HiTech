@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#0A1628',
-        'navy-lift': '#0F2040',
-        'navy-deep': '#060E1A',
-        steel: '#94A3B8', // Slate 400 (was #4A5568)
-        electric: '#2563EB',
-        'electric-dim': '#1D4ED8',
+        navy: '#012169', // PMS 280 C
+        'navy-lift': '#0B3386', // Lifted PMS 280 C
+        'navy-deep': '#001850', // Deeper PMS 280 C
+        steel: '#75787B', // Cool Gray 9 C
+        electric: '#00A3E0', // PMS 299 C
+        'electric-dim': '#0085B8',
         offwhite: '#F8FAFC',
         'text-light': '#FFFFFF',
         'text-muted': '#CBD5E1', // Slate 300 (was #94A3B8)

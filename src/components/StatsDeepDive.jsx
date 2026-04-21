@@ -56,7 +56,7 @@ const StatsDeepDive = () => {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-10 border-t border-b sm:border-b-0 lg:border-t-0 border-white/[0.08]">
         {stats.map((stat, idx) => (
-          <div key={idx} className={`deep-stat-block flex flex-col justify-center items-center lg:items-start text-center lg:text-left py-12 lg:py-10 px-4 lg:px-8 xl:px-12
+          <div key={idx} className={`deep-stat-block flex flex-col justify-center items-center text-center py-12 lg:py-10 px-4
             ${idx !== 0 ? 'lg:border-l lg:border-white/[0.08]' : ''} 
             ${idx % 2 !== 0 ? 'sm:border-l sm:border-white/[0.08]' : ''}
             ${idx >= 2 ? 'border-t border-white/[0.08] lg:border-t-0' : 'border-b sm:border-b-0 border-white/[0.08] lg:border-b-0'}`}
