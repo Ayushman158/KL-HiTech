@@ -15,11 +15,11 @@ const Home = () => {
     <main>
       <Hero />
       <AboutUs />
+      <StatsDeepDive />
       <SolutionsGrid />
       <EditorialBreak />
       <FeaturedProducts />
       <Industries />
-      <StatsDeepDive />
       <ClientLogos />
       <LatestInsights />
       <CTABanner />
