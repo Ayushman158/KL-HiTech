@@ -115,14 +115,14 @@ const ServicePage = () => {
   }, [location.pathname]);
 
   return (
-    <div ref={containerRef} className="pt-32 pb-24 min-h-[85vh] bg-navy flex flex-col justify-center items-center px-6 relative overflow-hidden">
+    <div ref={containerRef} className="pt-32 pb-24 min-h-[85vh] bg-offwhite flex flex-col justify-center items-center px-6 relative overflow-hidden">
       
       {/* Cinematic Grid Background */}
-      <div className="bg-grid absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(37,99,235,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      <div className="bg-grid absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(rgba(1,33,105,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(1,33,105,0.06) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       
       {/* Glow Orbs */}
-      <div className="absolute top-[10%] left-[10%] w-[40vh] h-[40vh] bg-electric/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-[10%] right-[10%] w-[50vh] h-[50vh] bg-[#2B5DE2]/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-[10%] left-[10%] w-[40vh] h-[40vh] bg-electric/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply"></div>
+      <div className="absolute bottom-[10%] right-[10%] w-[50vh] h-[50vh] bg-[#2B5DE2]/5 rounded-full blur-[120px] pointer-events-none mix-blend-multiply"></div>
 
       <div className="relative z-10 max-w-6xl w-full mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-center md:items-start text-left mt-8">
         
@@ -135,16 +135,16 @@ const ServicePage = () => {
             </div>
           </div>
           
-          <h1 className="service-anim font-sans font-[800] text-white text-[clamp(40px,5vw,60px)] leading-[1.15] tracking-tight mb-8 text-balance">
+          <h1 className="service-anim font-sans font-[800] text-navy text-[clamp(40px,5vw,60px)] leading-[1.15] tracking-tight mb-8 text-balance">
             {data.title}
           </h1>
           
-          <p className="service-anim font-sans text-text-muted text-[16px] md:text-[18px] leading-[1.8] mb-12 text-balance max-w-2xl">
+          <p className="service-anim font-sans text-steel font-medium text-[16px] md:text-[18px] leading-[1.8] mb-12 text-balance max-w-2xl">
             {data.desc}
           </p>
           
           <div className="service-anim flex flex-col sm:flex-row items-center gap-6">
-            <Link to="/contact" className="group flex items-center justify-center bg-electric text-white px-8 py-4 rounded-full font-sans font-[600] text-[15px] hover:bg-white hover:text-navy transition-all duration-500 shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(255,255,255,0.6)] w-full sm:w-auto">
+            <Link to="/contact" className="group flex items-center justify-center bg-electric text-white px-8 py-4 rounded-full font-sans font-[600] text-[15px] hover:bg-navy hover:text-white transition-all duration-500 shadow-[0_10px_30px_rgba(0,163,224,0.3)] hover:shadow-[0_15px_40px_rgba(1,33,105,0.4)] w-full sm:w-auto">
               Get in Touch Configuration
               <ChevronRight size={18} className="translate-x-2 group-hover:translate-x-4 transition-transform duration-300" />
             </Link>
@@ -152,7 +152,7 @@ const ServicePage = () => {
         </div>
 
         {/* Right Column: Capabilities / Bullets */}
-        <div className="service-anim w-full lg:w-[45%] bg-navy-lift border border-border-dark rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden group hover:border-electric/40 transition-colors duration-500">
+        <div className="service-anim w-full lg:w-[45%] bg-white border border-navy/10 rounded-3xl p-8 md:p-12 shadow-[0_20px_60px_rgba(1,33,105,0.06)] relative overflow-hidden group hover:border-electric/50 transition-all duration-500">
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-electric/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
           
           <h3 className="font-mono text-electric text-[12px] uppercase tracking-[0.15em] font-semibold mb-8">
@@ -163,7 +163,7 @@ const ServicePage = () => {
             {data.bullets.map((bullet, idx) => (
               <li key={idx} className="flex items-start space-x-4 relative z-10">
                 <CheckCircle2 size={24} className="text-electric flex-shrink-0 mt-0.5" />
-                <span className="font-sans text-white text-[15px] md:text-[16px] leading-relaxed pt-0.5">{bullet}</span>
+                <span className="font-sans text-navy font-[600] text-[15px] md:text-[16px] leading-relaxed pt-0.5 tracking-tight">{bullet}</span>
               </li>
             ))}
           </ul>

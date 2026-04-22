@@ -40,32 +40,32 @@ const Innovation = () => {
   ];
 
   return (
-    <main ref={containerRef} className="pt-[140px] pb-24 bg-navy min-h-screen relative overflow-hidden">
-      <div className="hero-glow absolute top-[-20%] right-[-20%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full pointer-events-none mix-blend-screen opacity-[0.05] z-0" style={{ background: 'radial-gradient(circle, rgba(37,99,235,1), transparent)' }} />
+    <main ref={containerRef} className="pt-[140px] pb-24 bg-offwhite min-h-screen relative overflow-hidden">
+      <div className="hero-glow absolute top-[-20%] right-[-20%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full pointer-events-none mix-blend-multiply opacity-[0.1] z-0" style={{ background: 'radial-gradient(circle, rgba(0,163,224,0.5), transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="mb-20 max-w-3xl animate-on-load text-center mx-auto">
-          <div className="font-mono text-[11px] text-electric uppercase tracking-[0.15em] mb-4">
+          <div className="font-mono text-[11px] text-electric uppercase tracking-[0.15em] mb-4 font-semibold">
             // OUR ARCHITECTURE
           </div>
-          <h1 className="text-white font-sans font-[800] text-[clamp(40px,5vw,72px)] leading-[1.1] tracking-tight mb-8">
+          <h1 className="text-navy font-sans font-[800] text-[clamp(40px,5vw,72px)] leading-[1.1] tracking-tight mb-8">
             Securing the world through <span className="text-electric italic font-serif">Innovation</span>.
           </h1>
-          <p className="text-steel text-[18px] leading-[1.6]">
+          <p className="text-steel font-medium text-[18px] leading-[1.6]">
             Every system is designed to be impenetrable. Every print is designed to be flawless.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {pillars.map((pillar, idx) => (
-            <div key={idx} className="animate-on-load bg-[#0E1B2E] border border-white/[0.06] rounded-[2rem] p-10 md:p-12 hover:border-electric/30 transition-colors duration-500 group relative">
-              <div className="w-14 h-14 rounded-full bg-navy border border-border-dark flex items-center justify-center mb-8 text-steel group-hover:text-electric transition-colors shadow-lg">
+            <div key={idx} className="animate-on-load bg-white border border-navy/10 shadow-[0_15px_40px_rgba(1,33,105,0.03)] rounded-[2rem] p-10 md:p-12 hover:border-electric transition-all duration-500 hover:shadow-[0_20px_60px_rgba(1,33,105,0.08)] group relative">
+              <div className="w-14 h-14 rounded-full bg-offwhite border border-navy/10 flex items-center justify-center mb-8 text-steel group-hover:text-electric transition-colors shadow-sm">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   {pillar.icon}
                 </svg>
               </div>
-              <h3 className="text-white font-sans font-[700] text-2xl mb-4 group-hover:text-electric transition-colors">{pillar.title}</h3>
-              <p className="text-text-muted text-[16px] leading-[1.8]">{pillar.desc}</p>
+              <h3 className="text-navy font-sans font-[800] text-2xl mb-4 group-hover:text-electric transition-colors tracking-tight">{pillar.title}</h3>
+              <p className="text-steel font-medium text-[16px] leading-[1.8] text-pretty">{pillar.desc}</p>
             </div>
           ))}
         </div>
