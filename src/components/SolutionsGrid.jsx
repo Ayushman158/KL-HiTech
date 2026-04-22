@@ -57,17 +57,17 @@ const SolutionsGrid = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-16 md:py-[6rem] bg-navy-lift w-full relative z-10 border-b border-border-dark">
+    <section ref={containerRef} className="py-16 md:py-[6rem] bg-offwhite w-full relative z-10 border-b border-navy/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         <div className="mb-16">
           <div className="font-mono text-[11px] text-electric uppercase tracking-[0.15em] mb-4">
             // OUR SOLUTIONS
           </div>
-          <h2 className="font-sans font-[700] text-white text-[clamp(32px,4vw,48px)] tracking-tight mb-4">
+          <h2 className="font-sans font-[700] text-navy text-[clamp(32px,4vw,48px)] tracking-tight mb-4">
             Built for Critical Infrastructure
           </h2>
-          <p className="font-sans text-text-muted text-base max-w-[600px] leading-[1.7]">
+          <p className="font-sans text-steel text-base max-w-[600px] leading-[1.7]">
             Empowering the foundational systems of economies with end-to-end security printing and identity solutions.
           </p>
         </div>
@@ -75,19 +75,19 @@ const SolutionsGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sectors.map((sector, idx) => (
             <div key={idx} className="solution-card-wrapper h-full">
-              <div className="group bg-navy rounded-[1.5rem] p-8 border border-white/[0.08] cursor-pointer relative overflow-hidden transition-all duration-[0.3s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-1 hover:border-electric/50 h-full flex flex-col">
+              <div className="group bg-white rounded-[1.5rem] p-8 border border-navy/10 cursor-pointer relative overflow-hidden transition-all duration-[0.3s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-1 hover:border-electric hover:shadow-[0_20px_40px_rgba(1,33,105,0.08)] h-full flex flex-col">
                 <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-electric transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
                 
-                <div className="w-12 h-12 rounded-xl bg-navy-lift border border-border-dark flex items-center justify-center mb-6 text-steel group-hover:text-electric transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-offwhite border border-navy/5 flex items-center justify-center mb-6 text-steel group-hover:text-electric transition-colors">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     {sector.icon}
                   </svg>
                 </div>
                 
-                <h3 className="font-sans font-[600] text-white text-[18px] mb-3 group-hover:text-electric transition-colors pr-4">
+                <h3 className="font-sans font-[600] text-navy text-[18px] mb-3 group-hover:text-electric transition-colors pr-4">
                   {sector.name}
                 </h3>
-                <p className="font-sans text-text-muted text-[14px] leading-[1.6] mb-6 line-clamp-2">
+                <p className="font-sans text-steel text-[14px] leading-[1.6] mb-6 line-clamp-2">
                   {sector.desc}
                 </p>
                 

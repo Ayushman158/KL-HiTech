@@ -45,30 +45,30 @@ const LatestInsights = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-16 md:py-[6rem] bg-navy w-full relative border-b border-border-dark">
+    <section ref={containerRef} className="py-16 md:py-[6rem] bg-offwhite w-full relative border-b border-navy/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col">
-        <h2 className="font-sans font-[700] text-white text-[clamp(28px,4vw,40px)] tracking-tight mb-12 text-center md:text-left">
+        <h2 className="font-sans font-[700] text-navy text-[clamp(28px,4vw,40px)] tracking-tight mb-12 text-center md:text-left">
           From the Knowledge Hub
         </h2>
         
         <div className="insight-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {insights.map((item, idx) => (
             <div key={idx} className="insight-card-wrapper h-full">
-              <div className="group bg-navy-lift rounded-[1.5rem] border border-white/[0.08] p-8 hover:-translate-y-2 hover:border-electric/40 transition-all duration-[0.4s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex flex-col cursor-pointer h-full">
+              <div className="group bg-white rounded-[1.5rem] border border-navy/10 p-8 hover:-translate-y-2 hover:border-electric transition-all duration-[0.4s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex flex-col cursor-pointer h-full shadow-[0_2px_10px_rgba(1,33,105,0.02)] hover:shadow-[0_15px_40px_rgba(1,33,105,0.08)]">
                 <div className="mb-6">
                   <span className="inline-block px-3 py-1 bg-electric/10 text-electric border border-electric/20 rounded-full font-mono text-[11px] font-semibold tracking-wider">
                     {item.tag}
                   </span>
                 </div>
-                <h3 className="font-sans font-[600] text-white text-[20px] leading-[1.4] mb-4 group-hover:text-electric transition-colors duration-300">
+                <h3 className="font-sans font-[600] text-navy text-[20px] leading-[1.4] mb-4 group-hover:text-electric transition-colors duration-300">
                   {item.title}
                 </h3>
-                <p className="font-sans text-text-muted text-[14px] leading-[1.6] mb-8 line-clamp-2 flex-grow text-pretty">
+                <p className="font-sans text-steel text-[14px] leading-[1.6] mb-8 line-clamp-2 flex-grow text-pretty">
                   {item.excerpt}
                 </p>
-                <div className="flex items-center justify-between mt-auto border-t border-white/5 pt-6">
-                  <span className="font-mono text-[11px] text-text-muted uppercase tracking-widest">{item.date}</span>
-                  <Link to="/knowledge-hub" className="font-sans text-[14px] font-[500] text-electric opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center outline-none">
+                <div className="flex items-center justify-between mt-auto border-t border-navy/5 pt-6">
+                  <span className="font-mono text-[11px] text-steel font-semibold uppercase tracking-widest">{item.date}</span>
+                  <Link to="/knowledge-hub" className="font-sans text-[14px] font-[600] text-electric opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex items-center outline-none">
                     Read More <span className="ml-1">→</span>
                   </Link>
                 </div>
@@ -78,7 +78,7 @@ const LatestInsights = () => {
         </div>
         
         <div className="flex justify-center text-center">
-          <Link to="/knowledge-hub" className="inline-flex items-center text-electric hover:text-white font-sans font-[500] text-[16px] transition-colors duration-300 group outline-none">
+          <Link to="/knowledge-hub" className="inline-flex items-center text-electric hover:text-navy font-sans font-[600] text-[16px] transition-colors duration-300 group outline-none">
             View all insights <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>

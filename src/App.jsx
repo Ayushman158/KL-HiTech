@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="relative w-full min-h-screen bg-navy text-text-light font-sans selection:bg-electric selection:text-white overflow-x-hidden flex flex-col">
+      <div className="relative w-full min-h-screen bg-offwhite text-text-dark font-sans selection:bg-electric selection:text-white overflow-x-hidden flex flex-col">
         <Navbar />
         <div className="flex-grow">
           <Routes>

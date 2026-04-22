@@ -138,14 +138,14 @@ const FeaturedProducts = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-16 md:py-[8rem] bg-navy-lift w-full relative border-b border-border-dark overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-[8rem] bg-offwhite w-full relative border-y border-navy/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         <div className="mb-20 text-center md:text-left relative z-10">
-          <h2 className="font-sans font-[700] text-white text-[clamp(32px,4vw,48px)] tracking-tight mb-4">
+          <h2 className="font-sans font-[700] text-navy text-[clamp(32px,4vw,48px)] tracking-tight mb-4">
             Technology at the Core
           </h2>
-          <p className="font-sans text-text-muted text-[18px] max-w-[600px] leading-[1.7]">
+          <p className="font-sans text-steel text-[18px] max-w-[600px] leading-[1.7]">
             Four product pipelines defining modern secure interaction methodologies. 
           </p>
         </div>
@@ -159,9 +159,9 @@ const FeaturedProducts = () => {
                   
                   {/* 3D Visual Side */}
                   <div className="prod-visual w-full md:w-[45%] flex justify-center items-center">
-                    <div className="w-full bg-navy border border-electric/10 rounded-[2rem] min-h-[380px] flex items-center justify-center relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                    <div className="w-full bg-white border border-navy/10 rounded-[2rem] min-h-[380px] flex items-center justify-center relative overflow-hidden group shadow-sm">
                       {/* Interactive Mesh Background Light */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-electric/10 to-transparent mix-blend-overlay"></div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-electric/5 to-transparent mix-blend-multiply"></div>
                       <div className="absolute left-[50%] top-[50%] transform -translate-x-[50%] -translate-y-[50%] w-[180px] h-[180px] bg-electric/15 blur-[50px] rounded-full group-hover:bg-electric/25 group-hover:scale-[1.2] transition-all duration-700"></div>
                       
                       {/* The 3D Element */}
@@ -173,16 +173,16 @@ const FeaturedProducts = () => {
 
                   {/* Text Side */}
                   <div className="prod-text w-full md:w-[50%] flex flex-col pt-6 md:pt-0">
-                    <h3 className="font-sans font-[700] text-white text-[32px] mb-4">
+                    <h3 className="font-sans font-[700] text-navy text-[32px] mb-4">
                       {prod.title}
                     </h3>
-                    <p className="font-sans text-text-muted text-[16px] md:text-[17px] leading-[1.8] mb-10 max-w-[500px]">
+                    <p className="font-sans text-steel text-[16px] md:text-[17px] leading-[1.8] mb-10 max-w-[500px]">
                       {prod.desc}
                     </p>
                     
                     <ul className="flex flex-col gap-4 mb-12">
                       {prod.specs.map((spec, sIdx) => (
-                        <li key={sIdx} className="flex items-center font-mono text-[13px] text-white/90 tracking-wide">
+                        <li key={sIdx} className="flex items-center font-mono text-[13px] text-navy tracking-wide font-medium">
                           <span className="w-1.5 h-1.5 rounded-full bg-electric mr-4 shadow-[0_0_5px_#2563EB]"></span>
                           {spec}
                         </li>
@@ -190,7 +190,7 @@ const FeaturedProducts = () => {
                     </ul>
                     
                     <div>
-                      <Link to={`/products/${prod.title.toLowerCase().replace(/ /g, '-')}`} className="inline-flex items-center text-electric hover:text-white transition-colors duration-300 font-mono text-[13px] font-semibold tracking-[0.05em] uppercase border border-electric/20 rounded-full px-6 py-2.5 bg-electric/5 hover:bg-electric/20">
+                      <Link to={`/products/${prod.title.toLowerCase().replace(/ /g, '-')}`} className="inline-flex items-center text-electric hover:text-navy transition-colors duration-300 font-mono text-[13px] font-semibold tracking-[0.05em] uppercase border border-electric/20 rounded-full px-6 py-2.5 bg-electric/5 hover:bg-electric/10 shadow-[0_5px_15px_rgba(0,163,224,0.1)]">
                         Request specifications <span className="ml-2 mt-[-2px]">→</span>
                       </Link>
                     </div>

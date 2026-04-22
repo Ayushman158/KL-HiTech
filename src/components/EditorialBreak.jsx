@@ -35,7 +35,7 @@ const EditorialBreak = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-[10rem] bg-navy w-full relative border-b border-border-dark overflow-hidden">
+    <section ref={containerRef} className="py-[10rem] bg-white w-full relative border-b border-t border-navy/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-8 relative z-10">
         
         {/* Left Side */}
@@ -44,7 +44,7 @@ const EditorialBreak = () => {
             // MANUFACTURING EXCELLENCE
           </div>
           <h2 className="leading-[1.1] mb-12">
-            <div className="font-sans font-[700] text-white text-[clamp(40px,5vw,56px)] tracking-tight">
+            <div className="font-sans font-[700] text-navy text-[clamp(40px,5vw,56px)] tracking-tight">
               One partner.
             </div>
             <div className="font-serif italic text-electric text-[clamp(44px,5vw,60px)] mt-1">
@@ -52,13 +52,13 @@ const EditorialBreak = () => {
             </div>
           </h2>
           
-          <ul className="flex flex-col border-t border-white/10 w-full">
+          <ul className="flex flex-col border-t border-navy/10 w-full">
             {[
               "ISO-certified manufacturing",
               "Visa, Mastercard & RuPay approved",
               "End-to-end supply chain security"
             ].map((text, idx) => (
-              <li key={idx} className="py-6 border-b border-white/10 text-white font-sans font-[600] text-[16px] md:text-[18px]">
+              <li key={idx} className="py-6 border-b border-navy/10 text-navy font-sans font-[600] text-[16px] md:text-[18px]">
                 {text}
               </li>
             ))}
@@ -69,7 +69,7 @@ const EditorialBreak = () => {
         <div className="photo-mosaic w-full lg:w-1/2 grid grid-cols-2 gap-4 h-full relative mt-16 lg:mt-0">
           {/* Left column */}
           <div className="flex flex-col gap-4 mt-12">
-             <div className="w-full h-[320px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-b from-navy-lift to-navy relative overflow-hidden flex items-end p-6" style={{ clipPath: 'inset(0 0 0 0)' }}>
+             <div className="w-full h-[320px] rounded-[1.5rem] border border-navy/10 bg-gradient-to-b from-white to-offwhite relative overflow-hidden flex items-end p-6 shadow-sm" style={{ clipPath: 'inset(0 0 0 0)' }}>
               <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(45deg, #2563EB 25%, transparent 25%, transparent 75%, #2563EB 75%, #2563EB), linear-gradient(45deg, #2563EB 25%, transparent 25%, transparent 75%, #2563EB 75%, #2563EB)', backgroundSize: '16px 16px', backgroundPosition: '0 0, 8px 8px' }}></div>
               
               {/* Dynamic 3D Framework Illustration */}
@@ -77,20 +77,20 @@ const EditorialBreak = () => {
                 <div className="relative w-[130px] h-[130px]" style={{ perspective: '800px' }}>
                   <div className="absolute inset-0 w-full h-full animate-[spin-slow_15s_linear_infinite]" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(55deg) rotateZ(45deg)' }}>
                     {/* Base Layer */}
-                    <div className="absolute inset-0 border border-electric/30 rounded-[1.5rem] bg-navy shadow-[0_0_30px_rgba(37,99,235,0.2)]" style={{ transform: 'translateZ(-30px)' }}></div>
+                    <div className="absolute inset-0 border border-electric/30 rounded-[1.5rem] bg-offwhite shadow-[0_10px_30px_rgba(37,99,235,0.15)]" style={{ transform: 'translateZ(-30px)' }}></div>
                     {/* Middle Layer */}
-                    <div className="absolute inset-4 border border-electric/60 rounded-[1rem] bg-navy-lift" style={{ transform: 'translateZ(10px)' }}></div>
+                    <div className="absolute inset-4 border border-electric/60 rounded-[1rem] bg-white" style={{ transform: 'translateZ(10px)' }}></div>
                     {/* Top Core Layer */}
-                    <div className="absolute inset-8 border border-white/20 rounded-[0.5rem] bg-electric/20 backdrop-blur-sm flex items-center justify-center shadow-[0_0_40px_rgba(37,99,235,0.6)]" style={{ transform: 'translateZ(50px)' }}>
-                       <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_15px_white]"></div>
+                    <div className="absolute inset-8 border border-white/40 rounded-[0.5rem] bg-electric/10 backdrop-blur-sm flex items-center justify-center shadow-[0_5px_15px_rgba(37,99,235,0.3)]" style={{ transform: 'translateZ(50px)' }}>
+                       <div className="w-2 h-2 bg-electric rounded-full animate-pulse shadow-[0_0_10px_#2563EB]"></div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="text-electric font-mono text-[10px] tracking-widest uppercase border border-electric/20 px-3 py-1.5 rounded-full backdrop-blur-md bg-[#060e1a]/80 shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative z-10 w-max">Secure Core Framework</div>
+              <div className="text-electric font-mono text-[10px] tracking-widest uppercase border border-electric/20 px-3 py-1.5 rounded-full backdrop-blur-md bg-white/80 shadow-[0_10px_20px_rgba(0,163,224,0.1)] relative z-10 w-max font-semibold">Secure Core Framework</div>
             </div>
-            <div className="w-full h-[260px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-tr from-[#060E1A] to-electric/10 relative overflow-hidden flex items-center justify-center p-6" style={{ clipPath: 'inset(0 0 0 0)' }}>
+            <div className="w-full h-[260px] rounded-[1.5rem] border border-navy/10 bg-gradient-to-tr from-offwhite to-electric/5 relative overflow-hidden flex items-center justify-center p-6 shadow-sm" style={{ clipPath: 'inset(0 0 0 0)' }}>
                {/* Animated rings */}
                <div className="w-full h-full border border-electric/20 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
                  <div className="w-[70%] h-[70%] border-t border-r border-electric/40 rounded-full"></div>
@@ -100,20 +100,20 @@ const EditorialBreak = () => {
           </div>
           {/* Right column */}
           <div className="flex flex-col gap-4">
-             <div className="w-full h-[260px] rounded-[1.5rem] border border-white/[0.06] bg-navy-lift relative overflow-hidden flex flex-col items-center justify-center" style={{ clipPath: 'inset(0 0 0 0)' }}>
-              <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)]" style={{ backgroundSize: '20px 20px' }}></div>
-              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-electric/40 shadow-[0_0_10px_#2563EB]"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-electric rounded-full shadow-[0_0_15px_#2563EB]"></div>
+             <div className="w-full h-[260px] rounded-[1.5rem] border border-navy/10 bg-white relative overflow-hidden flex flex-col items-center justify-center shadow-sm" style={{ clipPath: 'inset(0 0 0 0)' }}>
+              <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,rgba(1,33,105,1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(1,33,105,1)_1px,transparent_1px)]" style={{ backgroundSize: '20px 20px' }}></div>
+              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-electric/40 shadow-[0_0_10px_#00A3E0]"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-electric rounded-full shadow-[0_0_15px_#00A3E0]"></div>
             </div>
-            <div className="w-full h-[320px] rounded-[1.5rem] border border-white/[0.06] bg-gradient-to-b from-navy to-electric/5 relative overflow-hidden p-6 flex flex-col justify-end" style={{ clipPath: 'inset(0 0 0 0)' }}>
+            <div className="w-full h-[320px] rounded-[1.5rem] border border-navy/10 bg-gradient-to-b from-white to-electric/5 relative overflow-hidden p-6 flex flex-col justify-end shadow-sm" style={{ clipPath: 'inset(0 0 0 0)' }}>
               {/* Analytics bars */}
               <div className="w-full h-[50%] border-l border-b border-electric/20 mb-6 flex items-end justify-between px-2 pt-4 relative">
-                <div className="w-[15%] h-[40%] bg-electric/20 rounded-t-sm backdrop-blur-sm"></div>
-                <div className="w-[15%] h-[60%] bg-electric/40 rounded-t-sm backdrop-blur-sm"></div>
-                <div className="w-[15%] h-[90%] bg-electric rounded-t-sm shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
-                <div className="w-[15%] h-[70%] bg-electric/60 rounded-t-sm backdrop-blur-sm"></div>
+                <div className="w-[15%] h-[40%] bg-electric/20 rounded-t-sm backdrop-blur-sm -mb-[1px]"></div>
+                <div className="w-[15%] h-[60%] bg-electric/40 rounded-t-sm backdrop-blur-sm -mb-[1px]"></div>
+                <div className="w-[15%] h-[90%] bg-electric/80 rounded-t-sm shadow-[0_0_15px_rgba(0,163,224,0.3)] -mb-[1px]"></div>
+                <div className="w-[15%] h-[70%] bg-electric/60 rounded-t-sm backdrop-blur-sm -mb-[1px]"></div>
               </div>
-              <div className="text-white/50 font-mono text-[10px] tracking-widest uppercase">Global Output Velocity</div>
+              <div className="text-steel font-mono text-[10px] tracking-widest uppercase font-semibold">Global Output Velocity</div>
             </div>
           </div>
         </div>

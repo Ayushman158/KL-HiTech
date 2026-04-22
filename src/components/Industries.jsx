@@ -29,15 +29,15 @@ const IndustryCard = ({ ind }) => {
       to="/solutions"
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="flex-none block w-[260px] lg:w-[240px] xl:w-[220px] bg-navy-lift rounded-[1.5rem] p-[1.75rem] border border-white/[0.08] group hover:border-electric/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(37,99,235,0.15)] transition-all duration-[0.4s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] relative overflow-hidden flex flex-col cursor-pointer outline-none"
+      className="flex-none block w-[260px] lg:w-[240px] xl:w-[220px] bg-white rounded-[1.5rem] p-[1.75rem] border border-navy/10 group hover:border-electric hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(1,33,105,0.08)] transition-all duration-[0.4s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] relative overflow-hidden flex flex-col cursor-pointer outline-none"
     >
       <div 
         ref={glowRef}
         className="pointer-events-none absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       />
       <div className="relative z-10 flex flex-col h-full pointer-events-none">
-        <h3 className="font-sans font-[600] text-white text-[18px] mb-3 group-hover:text-electric transition-colors duration-300">{ind.name}</h3>
-        <p className="font-sans text-text-muted text-[13px] leading-[1.6] mb-6 flex-grow">{ind.desc}</p>
+        <h3 className="font-sans font-[600] text-navy text-[18px] mb-3 group-hover:text-electric transition-colors duration-300">{ind.name}</h3>
+        <p className="font-sans text-steel text-[13px] leading-[1.6] mb-6 flex-grow">{ind.desc}</p>
         <div className="mt-auto font-mono text-electric text-[12px] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center pt-4">
           View sector <span className="ml-2">→</span>
         </div>
@@ -130,7 +130,7 @@ const Industries = () => {
       <svg viewBox={viewBox} className="w-full h-auto opacity-90 relative z-10" style={{ transformStyle: 'preserve-3d', overflow: 'visible' }}>
         
         {/* Core Abstract Map */}
-        <g className="parallax-map-base" fill="rgba(255,255,255,0.04)" style={{ transformOrigin: '500px 250px' }}>
+        <g className="parallax-map-base" fill="rgba(1,33,105,0.06)" style={{ transformOrigin: '500px 250px' }}>
           <path d="M150 150h120v80h-60v40h-80v-80h20zM100 100h150v40h-150z" />
           <path d="M250 280h60v120h-40v40h-20z" />
           <path d="M450 100h80v60h-80zM400 130h40v40h-40z" />
@@ -158,35 +158,35 @@ const Industries = () => {
           {/* Pulsing Core */}
           <circle cx="650" cy="250" r="4" fill="#2563EB" className="animate-ping opacity-50" />
           
-          <circle cx="650" cy="235" r="3" fill="#ffffff" />
-          <text x="665" y="238" fill="white" fontSize="10" fontFamily="JetBrains Mono" className="tracking-widest">DELHI</text>
-          <line x1="650" y1="235" x2="660" y2="235" stroke="white" strokeWidth="0.5" opacity="0.5" />
+          <circle cx="650" cy="235" r="3" fill="#012169" />
+          <text x="665" y="238" fill="#012169" fontSize="10" fontFamily="JetBrains Mono" className="tracking-widest font-semibold">DELHI</text>
+          <line x1="650" y1="235" x2="660" y2="235" stroke="#012169" strokeWidth="0.5" opacity="0.4" />
           
-          <text x="675" y="255" fill="white" fontSize="10" fontFamily="JetBrains Mono">NOIDA</text>
-          <line x1="660" y1="250" x2="670" y2="252" stroke="white" strokeWidth="0.5" opacity="0.5" />
+          <text x="675" y="255" fill="#012169" fontSize="10" fontFamily="JetBrains Mono" className="font-semibold">NOIDA</text>
+          <line x1="660" y1="250" x2="670" y2="252" stroke="#012169" strokeWidth="0.5" opacity="0.4" />
           
-          <text x="675" y="275" fill="white" fontSize="10" fontFamily="JetBrains Mono">LUCKNOW</text>
+          <text x="675" y="275" fill="#012169" fontSize="10" fontFamily="JetBrains Mono" className="font-semibold">LUCKNOW</text>
           
-          <circle cx="635" cy="265" r="3" fill="#ffffff" />
-          <text x="560" y="268" fill="white" fontSize="10" fontFamily="JetBrains Mono">MUMBAI</text>
-          <line x1="635" y1="265" x2="600" y2="265" stroke="white" strokeWidth="0.5" opacity="0.5" />
+          <circle cx="635" cy="265" r="3" fill="#012169" />
+          <text x="560" y="268" fill="#012169" fontSize="10" fontFamily="JetBrains Mono" className="font-semibold">MUMBAI</text>
+          <line x1="635" y1="265" x2="600" y2="265" stroke="#012169" strokeWidth="0.5" opacity="0.4" />
           
-          <circle cx="645" cy="285" r="3" fill="#ffffff" />
-          <text x="545" y="288" fill="white" fontSize="10" fontFamily="JetBrains Mono">BENGALURU</text>
-          <line x1="645" y1="285" x2="605" y2="285" stroke="white" strokeWidth="0.5" opacity="0.5" />
+          <circle cx="645" cy="285" r="3" fill="#012169" />
+          <text x="545" y="288" fill="#012169" fontSize="10" fontFamily="JetBrains Mono" className="font-semibold">BENGALURU</text>
+          <line x1="645" y1="285" x2="605" y2="285" stroke="#012169" strokeWidth="0.5" opacity="0.4" />
 
-          <circle cx="655" cy="275" r="3" fill="#ffffff" />
-          <text x="675" y="295" fill="white" fontSize="10" fontFamily="JetBrains Mono" className="font-semibold text-electric">BOLLARAM HQ</text>
-          <line x1="655" y1="275" x2="670" y2="290" stroke="white" strokeWidth="0.5" opacity="0.5" />
+          <circle cx="655" cy="275" r="3" fill="#012169" />
+          <text x="675" y="295" fill="#2563EB" fontSize="10" fontFamily="JetBrains Mono" className="font-bold">BOLLARAM HQ</text>
+          <line x1="655" y1="275" x2="670" y2="290" stroke="#012169" strokeWidth="0.5" opacity="0.4" />
         </g>
       </svg>
     </div>
   );
 
   return (
-    <section ref={containerRef} className="py-16 md:py-[6rem] bg-navy w-full relative border-b border-border-dark overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-[6rem] bg-white w-full relative border-b border-navy/10 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col">
-        <h2 className="font-sans font-[700] text-white text-[clamp(32px,4vw,48px)] tracking-tight mb-12 relative z-20">
+        <h2 className="font-sans font-[700] text-navy text-[clamp(32px,4vw,48px)] tracking-tight mb-12 relative z-20">
           Across Every Critical Sector
         </h2>
         
@@ -204,10 +204,10 @@ const Industries = () => {
           ref={mapRef} 
           onMouseMove={handleMapMouseMove}
           onMouseLeave={handleMapMouseLeave}
-          className="w-full relative mt-20 mb-10 overflow-hidden rounded-[2rem] border border-white/10 bg-[#060E1A] shadow-2xl cursor-crosshair group transition-all duration-300 hover:border-electric/30"
+          className="w-full relative mt-20 mb-10 overflow-hidden rounded-[2rem] border border-navy/10 bg-offwhite shadow-sm cursor-crosshair group transition-all duration-300 hover:border-electric/40"
         >
           {/* Dynamic Grid Background Overlay */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-700" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+          <div className="absolute inset-0 pointer-events-none opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-700" style={{ backgroundImage: 'linear-gradient(rgba(1,33,105,1) 1px, transparent 1px), linear-gradient(90deg, rgba(1,33,105,1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
           
           <div className="hidden lg:block w-full max-w-[1000px] mx-auto py-12 relative z-10">
             <MapSVG viewBox="0 0 1000 500" />

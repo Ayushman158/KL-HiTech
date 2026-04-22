@@ -51,23 +51,23 @@ const StatsDeepDive = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-[5rem] bg-navy-lift w-full relative border-b border-border-dark overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.05),transparent_70%)] pointer-events-none"></div>
+    <section ref={containerRef} className="py-[5rem] bg-offwhite w-full relative border-y border-navy/10 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,163,224,0.05),transparent_70%)] pointer-events-none"></div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-10 border-t border-b sm:border-b-0 lg:border-t-0 border-white/[0.08]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-10 border-t border-b sm:border-b-0 lg:border-t-0 border-navy/10">
         {stats.map((stat, idx) => (
           <div key={idx} className={`deep-stat-block flex flex-col justify-center items-center text-center py-12 lg:py-10 px-4
-            ${idx !== 0 ? 'lg:border-l lg:border-white/[0.08]' : ''} 
-            ${idx % 2 !== 0 ? 'sm:border-l sm:border-white/[0.08]' : ''}
-            ${idx >= 2 ? 'border-t border-white/[0.08] lg:border-t-0' : 'border-b sm:border-b-0 border-white/[0.08] lg:border-b-0'}`}
+            ${idx !== 0 ? 'lg:border-l lg:border-navy/10' : ''} 
+            ${idx % 2 !== 0 ? 'sm:border-l sm:border-navy/10' : ''}
+            ${idx >= 2 ? 'border-t border-navy/10 lg:border-t-0' : 'border-b sm:border-b-0 border-navy/10 lg:border-b-0'}`}
           >
-            <div className="font-sans font-[800] text-white text-[clamp(64px,7vw,96px)] tracking-[-0.03em] leading-none mb-4 h-[80px] lg:h-[100px] flex items-center">
+            <div className="font-sans font-[800] text-navy text-[clamp(64px,7vw,96px)] tracking-[-0.03em] leading-none mb-4 h-[80px] lg:h-[100px] flex items-center shadow-none">
               <span className="deep-stat-val">0{stat.suffix}</span>
             </div>
-            <div className="font-sans font-[500] text-electric text-[16px] mb-1">
+            <div className="font-sans font-[600] text-electric text-[16px] mb-1">
               {stat.l1}
             </div>
-            <div className="font-mono text-text-muted text-[12px] tracking-wide uppercase">
+            <div className="font-mono text-steel text-[12px] tracking-wide uppercase font-medium">
               {stat.l2}
             </div>
           </div>
