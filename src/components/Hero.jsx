@@ -70,8 +70,7 @@ const Hero = () => {
       tl.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' })
         .from('.hero-heading .line', { y: 50, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.4')
         .from('.hero-desc', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.6')
-        .from('.hero-cta', { y: 20, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.6')
-        .from('.hero-stats', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.4');
+        .from('.hero-cta', { y: 20, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.6');
 
       // 3D Visual Elements Setups
       gsap.set([cardMainRef.current, idCardRef.current, rfidRef.current], {
@@ -110,12 +109,7 @@ const Hero = () => {
       
       containerRef.current.addEventListener('mousemove', handleMouseMove);
 
-      // Counters
-      const counters = document.querySelectorAll('.hero-counter');
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        gsap.to(counter, { innerText: target, duration: 2.5, snap: { innerText: 1 }, ease: 'power3.out', onUpdate: function() { counter.innerText = Math.ceil(this.targets()[0].innerText); }});
-      });
+
 
       return () => {
         if (containerRef.current) containerRef.current.removeEventListener('mousemove', handleMouseMove);
@@ -128,90 +122,90 @@ const Hero = () => {
     <section ref={containerRef} className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-offwhite pt-28 md:pt-36 pb-16 md:pb-20">
       
       {/* SHADER MESH BACKGROUND (LIGHT MODE) */}
-      <div ref={bgRef} className="absolute inset-0 w-full h-full z-0 overflow-hidden opacity-50 mix-blend-multiply">
-        <div ref={obj1Ref} className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] mix-blend-multiply" style={{ background: 'radial-gradient(circle, rgba(0,163,224,0.15) 0%, rgba(248,250,252,0) 70%)' }}></div>
-        <div ref={obj2Ref} className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px] mix-blend-multiply" style={{ background: 'radial-gradient(circle, rgba(1,33,105,0.08) 0%, rgba(248,250,252,0) 70%)' }}></div>
+      <div ref={bgRef} className="absolute inset-0 w-full h-full z-0 overflow-hidden opacity-80 mix-blend-multiply flex items-center justify-center">
+        <div ref={obj1Ref} className="absolute w-[80vw] h-[80vw] max-w-[1400px] max-h-[1400px] translate-y-[-20%] rounded-full blur-[160px] mix-blend-multiply opacity-40" style={{ background: 'radial-gradient(circle, rgba(0,163,224,0.3) 0%, rgba(248,250,252,0) 70%)' }}></div>
+        <div ref={obj2Ref} className="absolute w-[70vw] h-[70vw] max-w-[1200px] max-h-[1200px] translate-y-[20%] rounded-full blur-[140px] mix-blend-multiply opacity-50" style={{ background: 'radial-gradient(circle, rgba(1,33,105,0.15) 0%, rgba(248,250,252,0) 70%)' }}></div>
         {/* Subtle Node Data Grid overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA0MCAwIEwgMCAwIDAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLCAwLCAwLCAwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA0MCAwIEwgMCAwIDAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLCAwLCAwLCAwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_40%,#000_10%,transparent_100%)]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 mt-12 md:mt-0">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10 flex flex-col items-center justify-start gap-0 md:gap-4 mt-8">
         
-        {/* Left Typography Side */}
-        <div className="flex flex-col items-start text-left w-full lg:w-[55%]">
-          <div className="hero-badge inline-flex items-center space-x-2 bg-navy/5 border border-navy/10 backdrop-blur-md rounded-full px-4 py-2 mb-8 md:mb-10">
+        {/* Centered Typography Block */}
+        <div className="flex flex-col items-center text-center w-full max-w-4xl relative z-40 pt-10">
+          <div className="hero-badge inline-flex items-center space-x-2 bg-white border border-navy/10 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 md:mb-10 shadow-[0_10px_20px_rgba(1,33,105,0.05)]">
             <span className="w-2 h-2 rounded-full bg-electric animate-pulse"></span>
-            <span className="font-mono text-[10px] md:text-[12px] text-navy uppercase tracking-widest font-bold">Next-Generation Printing</span>
+            <span className="font-mono text-[10px] md:text-[11px] text-navy uppercase tracking-[0.15em] font-bold">Next-Generation Print Manufacturing</span>
           </div>
 
-          <div className="hero-heading font-sans font-[800] text-[clamp(44px,6vw,84px)] leading-[1.05] tracking-tight text-navy mb-8">
-            <div className="overflow-hidden py-2 -my-2"><div className="line">Forging the</div></div>
-            <div className="overflow-hidden py-2 -my-2"><div className="line">architecture</div></div>
-            <div className="overflow-hidden py-2 -my-2"><div className="line">of <span className="text-electric font-serif italic font-[500] pr-6">absolute trust.</span></div></div>
+          <div className="hero-heading font-sans font-[800] text-[clamp(44px,6vw,84px)] leading-[1.05] tracking-tight text-navy mb-8 text-balance">
+            <div className="overflow-hidden py-2 -my-2"><div className="line">Forging the architecture</div></div>
+            <div className="overflow-hidden py-2 -my-2"><div className="line">of <span className="text-electric font-serif italic font-[500] pr-6 border-b-4 border-electric/30">absolute trust.</span></div></div>
           </div>
 
-          <p className="hero-desc font-sans text-steel text-[16px] md:text-[18px] leading-[1.7] max-w-[500px] text-balance mb-12">
-            India's premier partner for governments and financial institutions since 1988. Delivering unbreakable authentication across physical cards and digital identities.
+          <p className="hero-desc font-sans text-steel font-medium text-[16px] md:text-[19px] leading-[1.7] max-w-2xl text-balance mb-12">
+            India's premier partner for governments and financial institutions since 1988. Delivering unbreakable authentication across physical cards and digital identities in seconds.
           </p>
 
-          <div className="hero-cta flex flex-col sm:flex-row items-center gap-4 md:gap-5 mb-16 w-full sm:w-auto">
-            <Link to="/solutions" className="w-full sm:w-auto bg-electric text-white px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] hover:bg-navy transition-all duration-300 shadow-[0_10px_25px_rgba(0,163,224,0.4)] text-center">
-              Explore Solutions
+          <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-5 w-full sm:w-auto">
+            <Link to="/contact" className="w-full sm:w-auto bg-navy text-white px-8 py-3.5 rounded-full font-sans font-[600] text-[15px] hover:bg-electric transition-all duration-300 shadow-[0_15px_30px_rgba(1,33,105,0.2)] hover:shadow-[0_15px_30px_rgba(0,163,224,0.3)] text-center tracking-wide">
+              Initiate Secure Link
             </Link>
-            <Link to="/contact" className="w-full sm:w-auto bg-white backdrop-blur-sm text-navy px-8 py-3.5 rounded-[0.5rem] font-sans font-[600] text-[15px] border border-navy/10 hover:border-navy/30 transition-all duration-300 text-center shadow-sm">
-              Request a Quote
+            <Link to="/innovation" className="group flex items-center justify-center gap-3 w-full sm:w-auto bg-white/60 backdrop-blur-md text-navy px-8 py-3.5 rounded-full font-sans font-[600] text-[15px] border border-navy/10 hover:border-electric/50 hover:bg-white transition-all duration-300 text-center shadow-[0_10px_20px_rgba(1,33,105,0.03)] focus:outline-none">
+              <div className="w-6 h-6 flex items-center justify-center rounded-full bg-navy/5 group-hover:bg-electric/10 transition-colors">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 group-hover:text-electric"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              Explore Architecture
             </Link>
-          </div>
-          
-          {/* Glassmorphic Stats Strip */}
-          <div className="hero-stats w-full max-w-[500px] bg-white/80 backdrop-blur-xl border border-white/40 rounded-2xl p-6 grid grid-cols-3 gap-4 divide-x divide-navy/10 shadow-[0_20px_50px_rgba(1,33,105,0.05)]">
-            <div className="flex flex-col items-center justify-center">
-              <div className="font-mono text-3xl font-bold text-electric mb-1"><span className="hero-counter" data-target="80">0</span>M+</div>
-              <div className="text-[10px] text-steel font-bold tracking-widest uppercase text-center">Cards Annually</div>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="font-mono text-3xl font-bold text-navy mb-1"><span className="hero-counter" data-target="52">0</span>+</div>
-              <div className="text-[10px] text-steel font-bold tracking-widest uppercase text-center">Countries Expo</div>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="font-mono text-3xl font-bold text-navy mb-1"><span className="hero-counter" data-target="500">0</span>+</div>
-              <div className="text-[10px] text-steel font-bold tracking-widest uppercase text-center">Clients Worldwide</div>
-            </div>
           </div>
         </div>
 
-        {/* Right 3D Interactive Side: Composite Visualization */}
-        <div className="hidden lg:flex w-full lg:w-[45%] h-[500px] relative mt-16 lg:mt-0 items-center justify-center pointer-events-none lg:pointer-events-auto">
+        {/* Floating Orchestration of 3D Visuals & Nodes */}
+        <div className="flex w-full h-[550px] relative mt-12 items-center justify-center pointer-events-none lg:pointer-events-auto">
           
+          {/* Orbiting Tech Badges (Like the Spotify/Discord logos in reference) */}
+          <div className="absolute top-[20%] left-[10%] z-30 transform -rotate-12 blur-[1px]">
+             <div className="text-[14px] font-sans font-[900] italic tracking-tighter text-white px-6 py-2 bg-[#1434CB] rounded-[0.5rem] shadow-xl">VISA</div>
+          </div>
+          <div className="absolute bottom-[20%] left-[15%] z-30 transform rotate-6 border border-navy/10 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full shadow-[0_20px_40px_rgba(1,33,105,0.1)]">
+             <div className="text-[13px] font-sans font-[800] tracking-tight text-navy">RuPay<span className="text-[#F26422]">~</span></div>
+          </div>
+          <div className="absolute top-[30%] right-[10%] z-30 transform rotate-12 blur-[0.5px]">
+             <div className="flex -space-x-2 drop-shadow-xl"><div className="w-8 h-8 rounded-full bg-[#EB001B] opacity-90 mix-blend-multiply"></div><div className="w-8 h-8 rounded-full bg-[#F79E1B] opacity-90 mix-blend-multiply"></div></div>
+          </div>
+          <div className="absolute bottom-[25%] right-[15%] z-30 transform -rotate-6 border border-navy/10 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-[0.5rem] shadow-[0_20px_40px_rgba(1,33,105,0.1)]">
+             <div className="text-[12px] font-mono tracking-widest font-bold text-navy border border-navy/20 px-2 py-0.5 rounded-[2px]">NCMC</div>
+          </div>
+
           {/* Top Left Text Capsule */}
-          <div ref={capsule1Ref} className="absolute top-[15%] left-[5%] z-30">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-navy border border-white/60 bg-white/80 backdrop-blur-lg px-4 py-2 rounded-full shadow-[0_15px_30px_rgba(1,33,105,0.08)] block font-semibold">
+          <div ref={capsule1Ref} className="absolute top-[10%] left-[25%] z-30">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-navy border border-white/60 bg-white/80 backdrop-blur-lg px-4 py-2 rounded-full shadow-[0_15px_30px_rgba(1,33,105,0.08)] block font-semibold">
               <span className="inline-block w-1.5 h-1.5 bg-electric rounded-full mr-2 shadow-[0_0_8px_#00A3E0]"></span>
               National ID Systems
             </div>
           </div>
 
           {/* Bottom Right Text Capsule */}
-          <div ref={capsule2Ref} className="absolute bottom-[20%] right-[-5%] z-30">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-navy border border-white/60 bg-white/80 backdrop-blur-lg px-4 py-2 rounded-full shadow-[0_15px_30px_rgba(1,33,105,0.08)] block font-semibold">
-              <span className="inline-block w-1.5 h-1.5 bg-electric rounded-full mr-2 shadow-[0_0_8px_#00A3E0]"></span>
+          <div ref={capsule2Ref} className="absolute bottom-[10%] right-[25%] z-30">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-navy border border-white/60 bg-white/80 backdrop-blur-lg px-4 py-2 rounded-full shadow-[0_15px_30px_rgba(1,33,105,0.08)] block font-semibold">
+              <span className="inline-block w-1.5 h-1.5 bg-[#10B981] rounded-full mr-2 shadow-[0_0_8px_#10B981]"></span>
               RFID Ecosystems
             </div>
           </div>
 
           {/* Back Left: RFID Chip component */}
-          <div ref={rfidRef} className="absolute top-[15%] left-[15%] z-0 opacity-80 blur-[0.5px]">
+          <div ref={rfidRef} className="absolute top-[30%] left-[30%] z-0 opacity-90">
              <HeroRFIDVisual />
           </div>
 
           {/* Back Right: National ID / Aadhaar style portrait card */}
-          <div ref={idCardRef} className="absolute bottom-[10%] right-[10%] z-0 scale-[0.85] opacity-90">
+          <div ref={idCardRef} className="absolute bottom-[15%] right-[30%] z-0 scale-[0.85] opacity-95">
              <NationalIDVisual />
           </div>
 
-          {/* Primary Front: Banking EMV Card */}
-          <div ref={cardMainRef} className="absolute inset-0 flex items-center justify-center z-20 scale-100 drop-shadow-[0_45px_45px_rgba(37,99,235,0.3)] hover:drop-shadow-[0_45px_55px_rgba(37,99,235,0.45)] transition-shadow duration-500">
-            <HeroCard className="border border-white/20 ring-1 ring-white/5 shadow-2xl" />
+          {/* Primary Front Container (Absolute Center): Banking EMV Card */}
+          <div ref={cardMainRef} className="absolute inset-0 flex items-center justify-center z-20 scale-[1.1] sm:scale-[1.2] drop-shadow-[0_45px_45px_rgba(1,33,105,0.15)] hover:drop-shadow-[0_45px_55px_rgba(0,163,224,0.3)] transition-shadow duration-500">
+            <HeroCard className="border border-white/30 ring-1 ring-white/10 shadow-2xl" />
           </div>
           
         </div>
