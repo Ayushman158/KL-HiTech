@@ -8,30 +8,44 @@ const Hero = () => {
   
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Vercel-style seamless entrance
+      // Elegant Asymmetrical Entrance Animation
       const tl = gsap.timeline();
       
-      gsap.set('.hero-reveal', { y: 30, opacity: 0 });
-      gsap.set(imageRef.current, { y: 50, opacity: 0, rotateX: 10, scale: 0.95 });
+      gsap.set('.hero-reveal-left', { x: -40, opacity: 0 });
+      gsap.set('.hero-reveal-right', { x: 40, opacity: 0 });
+      gsap.set('.hero-reveal-bottom', { y: 30, opacity: 0 });
+      gsap.set(imageRef.current, { scale: 0.9, opacity: 0, rotateZ: -5 });
       
-      tl.to('.hero-reveal', {
+      tl.to('.hero-reveal-left', {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'power3.out',
+        delay: 0.2
+      })
+      .to(imageRef.current, {
+        scale: 1,
+        opacity: 0.9,
+        rotateZ: 0,
+        duration: 2,
+        ease: 'power4.out',
+      }, "-=0.8")
+      .to('.hero-reveal-right', {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+      }, "-=1.5")
+      .to('.hero-reveal-bottom', {
         y: 0,
         opacity: 1,
         duration: 1,
-        stagger: 0.15,
+        stagger: 0.1,
         ease: 'power3.out',
-        delay: 0.1
-      })
-      .to(imageRef.current, {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
-        scale: 1,
-        duration: 1.5,
-        ease: 'power4.out',
-      }, "-=0.6");
+      }, "-=1.0");
 
-      // Interactive 3D mouse tracking for the image frame
+      // Smooth Mouse Parallax for the Intersecting Central Image
       const handleMouseMove = (e) => {
         if (!containerRef.current || !imageRef.current) return;
         const { left, top, width, height } = containerRef.current.getBoundingClientRect();
@@ -39,11 +53,12 @@ const Hero = () => {
         const py = (e.clientY - top) / height - 0.5;
 
         gsap.to(imageRef.current, {
-          rotationY: px * 10,
-          rotationX: -py * 10,
-          transformPerspective: 1500,
+          x: px * -40,
+          y: py * -40,
+          rotationY: px * 15,
+          rotationX: py * -15,
           ease: 'power2.out',
-          duration: 0.6
+          duration: 1.5
         });
       };
       
@@ -57,79 +72,88 @@ const Hero = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-center justify-start overflow-hidden bg-white pt-32 pb-20">
+    <section ref={containerRef} className="relative w-full min-h-screen bg-[#F8FAFC] overflow-hidden flex flex-col justify-between pt-24 md:pt-32">
       
-      {/* Vercel-style precise grid background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA0MCAwIEwgMCAwIDAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSwxLCAzMyLCAxMDUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_20%,transparent_100%)]"></div>
-        {/* Top central ambient glow */}
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] max-w-[800px] h-[500px] bg-electric/10 rounded-full blur-[100px] opacity-70 mix-blend-multiply"></div>
+      {/* Background Mesh Gradients to soften the harsh whiteness */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-50 z-0">
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-electric/10 rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-navy/5 rounded-full blur-[140px] -translate-x-1/3 translate-y-1/3"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10 flex flex-col items-center justify-start text-center mt-12">
+      {/* The Central Intersecting 3D/Elegant Image */}
+      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" style={{ perspective: '1200px' }}>
+         <img 
+            ref={imageRef}
+            src="/elegant_hero_centerpiece.png" 
+            className="w-[95vw] md:w-[80vw] lg:max-w-[1100px] h-auto object-contain mix-blend-multiply filter drop-shadow-[0_30px_60px_rgba(1,33,105,0.15)] mt-12 md:mt-0" 
+            alt="Secure Framework Architecture" 
+            style={{ transformStyle: 'preserve-3d' }}
+         />
+      </div>
+
+      {/* Asymmetrical Typography Layers (Z-20) */}
+      <div className="relative z-20 max-w-[1400px] w-full mx-auto px-6 lg:px-16 flex-1 flex flex-col pointer-events-none">
         
-        {/* Minimal Pill Badge */}
-        <div className="hero-reveal inline-flex items-center space-x-2 bg-white border border-gray-200 backdrop-blur-md rounded-full px-4 py-1.5 mb-8 shadow-sm hover:shadow-md transition-shadow cursor-default">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-electric opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-electric"></span>
-          </span>
-          <span className="font-mono text-[11px] md:text-[12px] text-navy uppercase tracking-widest font-semibold pt-px">Next-Generation Print Manufacturing</span>
-        </div>
-
-        {/* Hyper-minimal, Vercel-style Heading */}
-        <h1 className="hero-reveal font-sans font-[800] text-[clamp(44px,7vw,88px)] leading-[1.05] tracking-tighter text-navy max-w-4xl mb-6 text-balance flex flex-wrap justify-center items-center gap-x-4">
-          <span>Forging the architecture of</span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-navy via-electric to-navy bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
-            absolute trust.
-          </span>
-        </h1>
-
-        <p className="hero-reveal font-sans text-steel text-[16px] md:text-[20px] leading-[1.6] max-w-2xl text-balance mb-12 font-medium">
-          India's premier partner for governments and financial institutions. Delivering unbreakable authentication across physical cards and digital identities in seconds.
-        </p>
-
-        {/* Crisp Call to Actions */}
-        <div className="hero-reveal flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <Link to="/contact" className="w-full sm:w-auto bg-navy text-white px-8 py-3.5 rounded-full font-sans font-[600] text-[15px] hover:bg-[#000] focus:ring-4 focus:ring-navy/20 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 text-center">
-            Initiate Secure Link
-          </Link>
-          <Link to="/innovation" className="w-full sm:w-auto bg-white text-navy px-8 py-3.5 rounded-full font-sans font-[600] text-[15px] border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300 text-center shadow-sm">
-            Explore Architecture
-          </Link>
-        </div>
-
-        {/* Framer/Vercel Style Image Presentation inside 3D Perspective */}
-        <div className="w-full max-w-5xl mt-20 relative px-4 sm:px-0">
-          <div ref={imageRef} className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[1rem] md:rounded-[2rem] overflow-hidden bg-white/50 backdrop-blur-sm border border-gray-200/60 shadow-[0_40px_80px_rgba(1,33,105,0.12)]">
-            {/* Glossy Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-80 z-10 pointer-events-none mix-blend-overlay"></div>
-            
-            <img src="/elegant_hero_centerpiece.png" alt="Secure Infrastructure" className="w-full h-full object-cover transform scale-[1.01]" />
-            
-            {/* Lower Shadow Fade to ground the image */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none"></div>
-
-            {/* Faint UI Mockup Window Buttons to give it a tech-dashboard feel */}
-            <div className="absolute top-6 left-6 flex gap-2 z-20 hidden md:flex opacity-50">
-              <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-              <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-              <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-            </div>
+        {/* TOP LEFT BLOCK */}
+        <div className="w-full md:w-1/2 pt-10 md:pt-20 flex flex-col items-start pointer-events-auto">
+          <div className="hero-reveal-left font-sans font-[400] text-navy text-[clamp(44px,5vw,70px)] leading-[1.05] tracking-tight opacity-90">
+            Forging the<br/>architecture of
+          </div>
+          
+          <p className="hero-reveal-left font-sans text-steel font-medium text-[16px] md:text-[18px] leading-[1.7] max-w-sm mt-8 opacity-90 border-l border-electric/30 pl-4">
+            India's premier partner for governments and financial institutions since 1988. Delivering unbreakable authentication mechanics across the globe.
+          </p>
+          
+          <div className="hero-reveal-left mt-10">
+            <Link to="/contact" className="inline-flex items-center justify-center bg-navy text-white px-8 py-3.5 rounded-full font-sans font-[600] text-[15px] hover:bg-electric transition-colors duration-300 shadow-[0_15px_30px_rgba(1,33,105,0.2)]">
+              Initiate Secure Link
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-2 mt-[1px]"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
           </div>
         </div>
 
-        {/* Subtle Client Logos directly under the Hero frame */}
-        <div className="hero-reveal w-full max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-16 opacity-50 grayscale hover:grayscale-0 transition-duration-700">
-           <div className="font-sans font-[800] text-[18px] tracking-tight text-navy">VISA</div>
-           <div className="font-sans font-[800] text-[18px] tracking-tighter text-navy flex items-center gap-1">
-              <div className="flex -space-x-2"><div className="w-4 h-4 rounded-full bg-red-600 mix-blend-multiply"></div><div className="w-4 h-4 rounded-full bg-yellow-500 mix-blend-multiply"></div></div>
-              Mastercard
-           </div>
-           <div className="font-sans font-[800] text-[18px] tracking-tight text-navy">RuPay</div>
-           <div className="font-mono font-[700] text-[16px] tracking-widest text-navy border border-navy px-2 py-0.5 rounded-[4px]">NCMC</div>
+        {/* BOTTOM RIGHT BLOCK */}
+        <div className="w-full md:w-1/2 self-end mt-auto pb-16 md:pb-32 pt-32 md:pt-10 flex justify-end pointer-events-auto">
+          <div className="hero-reveal-right text-right">
+            <h1 className="font-sans font-[900] text-[clamp(60px,8vw,140px)] leading-[0.9] tracking-tighter">
+              <span className="block text-navy">Absolute</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-navy via-electric to-navy bg-[length:200%_auto] animate-[gradient_4s_linear_infinite]">
+                Trust.
+              </span>
+            </h1>
+          </div>
         </div>
 
+      </div>
+
+      {/* The Minimal/Clinical Stats Footer (Z-20) */}
+      <div className="relative z-20 w-full bg-white/80 backdrop-blur-xl border-t border-navy/10 py-10 px-6 lg:px-16 shadow-[0_-10px_40px_rgba(1,33,105,0.02)]">
+         <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 md:divide-x divide-navy/10">
+            
+            {/* Descriptive Text Column matching the reference style */}
+            <div className="hero-reveal-bottom flex flex-col justify-center px-0 md:pr-8">
+              <p className="font-sans text-[13px] md:text-[14px] leading-relaxed text-steel font-medium">
+                Keep your authentication channels flawless and secure with KL Hi-Tech's proprietary ISO-certified manufacturing infrastructure.
+              </p>
+            </div>
+            
+            {/* Data Columns */}
+            <div className="hero-reveal-bottom flex flex-row md:flex-col justify-between md:justify-center items-center md:items-start px-0 md:px-8 border-t border-navy/10 md:border-t-0 pt-4 md:pt-0">
+              <div className="font-sans text-[13px] md:text-[14px] text-steel font-medium md:mb-2 max-w-[120px]">Cards manufactured annually</div>
+              <div className="font-mono text-3xl md:text-5xl font-bold text-navy tracking-tighter">80<span className="text-electric">M+</span></div>
+            </div>
+            
+            <div className="hero-reveal-bottom flex flex-row md:flex-col justify-between md:justify-center items-center md:items-start px-0 md:px-8 border-t border-navy/10 md:border-t-0 pt-4 md:pt-0">
+              <div className="font-sans text-[13px] md:text-[14px] text-steel font-medium md:mb-2 max-w-[120px]">Global export destinations</div>
+              <div className="font-mono text-3xl md:text-5xl font-bold text-navy tracking-tighter">52<span className="text-electric">+</span></div>
+            </div>
+            
+            <div className="hero-reveal-bottom flex flex-row md:flex-col justify-between md:justify-center items-center md:items-start px-0 md:px-8 border-t border-navy/10 md:border-t-0 pt-4 md:pt-0">
+              <div className="font-sans text-[13px] md:text-[14px] text-steel font-medium md:mb-2 max-w-[120px]">Active clients worldwide</div>
+              <div className="font-mono text-3xl md:text-5xl font-bold text-navy tracking-tighter">500<span className="text-electric">+</span></div>
+            </div>
+
+         </div>
       </div>
 
       <style>{`
