@@ -75,20 +75,37 @@ const Hero = () => {
     <section ref={containerRef} className="relative w-full min-h-screen bg-[#F8FAFC] overflow-hidden flex flex-col justify-between pt-24 md:pt-32">
       
       {/* Background Mesh Gradients to soften the harsh whiteness */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-50 z-0">
-        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-electric/10 rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] bg-navy/5 rounded-full blur-[140px] -translate-x-1/3 translate-y-1/3"></div>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-70 z-0">
+        <div className="absolute top-[10%] right-[10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-[#00A3E0]/20 rounded-full blur-[140px]"></div>
+        <div className="absolute bottom-[10%] left-[10%] w-[60vw] h-[60vw] max-w-[1000px] max-h-[1000px] bg-[#012169]/15 rounded-full blur-[160px]"></div>
       </div>
 
-      {/* The Central Intersecting 3D/Elegant Image */}
+      {/* The Central Intersecting Glassmorphism Card */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" style={{ perspective: '1200px' }}>
-         <img 
+         <div 
             ref={imageRef}
-            src="/elegant_hero_centerpiece.png" 
-            className="w-[95vw] md:w-[80vw] lg:max-w-[1100px] h-auto object-contain mix-blend-multiply filter drop-shadow-[0_30px_60px_rgba(1,33,105,0.15)] mt-12 md:mt-0" 
-            alt="Secure Framework Architecture" 
+            className="w-[85vw] max-w-[800px] aspect-[4/3] rounded-[2.5rem] md:rounded-[4rem] border-2 border-white/60 bg-white/20 backdrop-blur-3xl shadow-[0_40px_80px_rgba(1,33,105,0.1),inset_0_0_80px_rgba(255,255,255,0.7)] flex flex-col items-center justify-center relative overflow-hidden" 
             style={{ transformStyle: 'preserve-3d' }}
-         />
+         >
+            {/* Internal ambient glowing nodes reflecting the brand colors */}
+            <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-electric/20 rounded-full blur-[100px]"></div>
+            <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-navy/10 rounded-full blur-[120px]"></div>
+            
+            {/* Architectural Grid Lines to emulate high-end PCB/Card substrate */}
+            <div className="absolute top-[30%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
+            <div className="absolute top-[70%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
+            <div className="absolute top-0 left-[30%] w-[1px] h-full bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
+            <div className="absolute top-0 left-[70%] w-[1px] h-full bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
+            
+            {/* Central Secure EMV Chip Representation (Glass style) */}
+            <div className="w-24 h-32 md:w-32 md:h-40 border-2 border-white/80 rounded-2xl bg-white/30 backdrop-blur-md shadow-[0_10px_30px_rgba(0,163,224,0.15),inset_0_0_20px_rgba(255,255,255,0.8)] relative z-10 flex items-center justify-center translate-x-[-100px] translate-y-[-60px]">
+               <div className="w-[80%] h-[80%] border border-white/50 rounded-lg"></div>
+               <div className="absolute right-[-10px] top-1/2 w-4 h-[2px] bg-white/70"></div>
+               <div className="absolute left-[-10px] top-1/2 w-4 h-[2px] bg-white/70"></div>
+               <div className="absolute top-[-10px] left-1/2 w-[2px] h-4 bg-white/70"></div>
+               <div className="absolute bottom-[-10px] left-1/2 w-[2px] h-4 bg-white/70"></div>
+            </div>
+         </div>
       </div>
 
       {/* Asymmetrical Typography Layers (Z-20) */}
