@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import HeroCard from './HeroCard';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -80,32 +81,14 @@ const Hero = () => {
         <div className="absolute bottom-[10%] left-[10%] w-[60vw] h-[60vw] max-w-[1000px] max-h-[1000px] bg-[#012169]/15 rounded-full blur-[160px]"></div>
       </div>
 
-      {/* The Central Intersecting Glassmorphism Card */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" style={{ perspective: '1200px' }}>
-         <div 
-            ref={imageRef}
-            className="w-[85vw] max-w-[800px] aspect-[4/3] rounded-[2.5rem] md:rounded-[4rem] border-2 border-white/60 bg-white/20 backdrop-blur-3xl shadow-[0_40px_80px_rgba(1,33,105,0.1),inset_0_0_80px_rgba(255,255,255,0.7)] flex flex-col items-center justify-center relative overflow-hidden" 
-            style={{ transformStyle: 'preserve-3d' }}
-         >
-            {/* Internal ambient glowing nodes reflecting the brand colors */}
-            <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-electric/20 rounded-full blur-[100px]"></div>
-            <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-navy/10 rounded-full blur-[120px]"></div>
-            
-            {/* Architectural Grid Lines to emulate high-end PCB/Card substrate */}
-            <div className="absolute top-[30%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
-            <div className="absolute top-[70%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
-            <div className="absolute top-0 left-[30%] w-[1px] h-full bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
-            <div className="absolute top-0 left-[70%] w-[1px] h-full bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
-            
-            {/* Central Secure EMV Chip Representation (Glass style) */}
-            <div className="w-24 h-32 md:w-32 md:h-40 border-2 border-white/80 rounded-2xl bg-white/30 backdrop-blur-md shadow-[0_10px_30px_rgba(0,163,224,0.15),inset_0_0_20px_rgba(255,255,255,0.8)] relative z-10 flex items-center justify-center translate-x-[-100px] translate-y-[-60px]">
-               <div className="w-[80%] h-[80%] border border-white/50 rounded-lg"></div>
-               <div className="absolute right-[-10px] top-1/2 w-4 h-[2px] bg-white/70"></div>
-               <div className="absolute left-[-10px] top-1/2 w-4 h-[2px] bg-white/70"></div>
-               <div className="absolute top-[-10px] left-1/2 w-[2px] h-4 bg-white/70"></div>
-               <div className="absolute bottom-[-10px] left-1/2 w-[2px] h-4 bg-white/70"></div>
-            </div>
+      {/* The Central Intersecting 3D Hero Card */}
+      <div className="absolute inset-0 flex items-center justify-center z-10" style={{ perspective: '1200px' }}>
+         <div ref={imageRef} className="relative z-10 scale-[1.3] md:scale-[1.8] pointer-events-none drop-shadow-[0_45px_45px_rgba(1,33,105,0.2)]">
+            <HeroCard />
          </div>
+         {/* Ambient Glows to give the card that magical abstract feeling */}
+         <div className="absolute top-[20%] left-[30%] w-[500px] h-[500px] bg-electric/15 rounded-full blur-[100px] mix-blend-multiply opacity-60 pointer-events-none"></div>
+         <div className="absolute bottom-[20%] right-[30%] w-[600px] h-[600px] bg-navy/10 rounded-full blur-[120px] mix-blend-multiply opacity-60 pointer-events-none"></div>
       </div>
 
       {/* Asymmetrical Typography Layers (Z-20) */}
