@@ -81,14 +81,28 @@ const Hero = () => {
         <div className="absolute bottom-[10%] left-[10%] w-[60vw] h-[60vw] max-w-[1000px] max-h-[1000px] bg-[#012169]/15 rounded-full blur-[160px]"></div>
       </div>
 
-      {/* The Central Intersecting 3D Hero Card */}
+      {/* The Central Intersecting 3D Hero Card with Abstract Rings */}
       <div className="absolute inset-0 flex items-center justify-center z-10" style={{ perspective: '1200px' }}>
+         
+         {/* Massive Abstract Frosted Glass Rings (Background Depth) */}
+         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 mix-blend-multiply opacity-80">
+            {/* Spinning Wireframe Orbit */}
+            <div className="absolute w-[60vw] max-w-[900px] aspect-square border-[1px] border-electric/30 rounded-full animate-[spin_40s_linear_infinite]" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)' }}></div>
+            <div className="absolute w-[70vw] max-w-[1000px] aspect-square border-[1px] border-navy/20 rounded-full animate-[spin_50s_linear_infinite_reverse]" style={{ clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)' }}></div>
+            
+            {/* Massive Thick Frosted Glass Ribbons */}
+            <div className="absolute w-[50vw] max-w-[700px] aspect-square border-[60px] border-white/40 rounded-full backdrop-blur-xl transform -rotate-12 translate-y-10 shadow-[0_0_80px_rgba(0,163,224,0.1)]"></div>
+            <div className="absolute w-[40vw] max-w-[500px] aspect-square border-[40px] border-white/60 rounded-full backdrop-blur-3xl transform rotate-12 -translate-x-12 translate-y-20 shadow-[0_0_60px_rgba(1,33,105,0.1)]"></div>
+         </div>
+
+         {/* 3D Foreground HeroCard */}
          <div ref={imageRef} className="relative z-10 scale-[1.3] md:scale-[1.8] pointer-events-none drop-shadow-[0_45px_45px_rgba(1,33,105,0.2)]">
             <HeroCard />
          </div>
+         
          {/* Ambient Glows to give the card that magical abstract feeling */}
-         <div className="absolute top-[20%] left-[30%] w-[500px] h-[500px] bg-electric/15 rounded-full blur-[100px] mix-blend-multiply opacity-60 pointer-events-none"></div>
-         <div className="absolute bottom-[20%] right-[30%] w-[600px] h-[600px] bg-navy/10 rounded-full blur-[120px] mix-blend-multiply opacity-60 pointer-events-none"></div>
+         <div className="absolute top-[20%] left-[30%] w-[500px] h-[500px] bg-electric/15 rounded-full blur-[100px] mix-blend-multiply opacity-60 pointer-events-none z-0"></div>
+         <div className="absolute bottom-[20%] right-[30%] w-[600px] h-[600px] bg-navy/10 rounded-full blur-[120px] mix-blend-multiply opacity-60 pointer-events-none z-0"></div>
       </div>
 
       {/* Asymmetrical Typography Layers (Z-20) */}
