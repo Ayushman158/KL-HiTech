@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from '../components/Hero';
+import HeroWebGL from '../components/HeroWebGL';
 import AboutUs from '../components/AboutUs';
 import SolutionsGrid from '../components/SolutionsGrid';
 import EditorialBreak from '../components/EditorialBreak';
@@ -13,7 +13,7 @@ import CTABanner from '../components/CTABanner';
 const Home = () => {
   return (
     <main>
-      <Hero />
+      <HeroWebGL />
       <AboutUs />
       <StatsDeepDive />
       <SolutionsGrid />
