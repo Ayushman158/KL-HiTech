@@ -61,6 +61,8 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isDarkHeroPage = ['/about', '/solutions', '/products'].includes(location.pathname);
+  const useDarkText = scrolled || !isDarkHeroPage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +93,7 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3 cursor-pointer group pt-1">
-           <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[28px] sm:h-[34px] w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
+           <img src="/klhitech-logo.png" alt="KL Hi-Tech Logo" className="h-[28px] sm:h-[34px] w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300" style={{ filter: useDarkText ? 'none' : 'invert(1) brightness(200%)' }} />
         </Link>
         
         {/* Desktop Nav links */}
@@ -102,7 +104,7 @@ const Navbar = () => {
               className="relative py-2"
               onMouseEnter={() => item.hasDropdown ? setActiveMenu(item.label) : setActiveMenu(null)}
             >
-              <div className={`flex items-center space-x-1 cursor-pointer text-sm transition-colors ${location.pathname === item.to ? 'text-electric font-medium' : 'text-navy hover:text-electric'}`}>
+              <div className={`flex items-center space-x-1 cursor-pointer text-sm transition-colors ${location.pathname === item.to ? 'text-electric font-medium' : (useDarkText ? 'text-navy hover:text-electric' : 'text-white/90 hover:text-white')}`}>
                 {item.to ? (
                   <Link to={item.to} className="outline-none focus:outline-none">{item.label}</Link>
                 ) : (
@@ -114,14 +116,14 @@ const Navbar = () => {
           ))}
 
           {/* CTA Button */}
-          <Link to="/contact" className="ml-4 font-sans text-sm font-medium border border-navy/20 px-5 py-2.5 rounded-[0.5rem] text-navy hover:text-white hover:bg-navy transition-all duration-300">
+          <Link to="/contact" className={`ml-4 font-sans text-sm font-medium border px-5 py-2.5 rounded-[0.5rem] transition-all duration-300 ${useDarkText ? 'border-navy/20 text-navy hover:text-white hover:bg-navy' : 'border-white/30 text-white hover:text-navy hover:bg-white'}`}>
             Get in Touch
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-navy focus:outline-none">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={`${useDarkText ? 'text-navy' : 'text-white'} focus:outline-none transition-colors`}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
